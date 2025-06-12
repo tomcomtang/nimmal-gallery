@@ -162,7 +162,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
-                        src="/images/gallery-cover-work.jpg"
+                        src="https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg"
                         alt="Photo 7"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
@@ -175,8 +175,37 @@ export default function CategoryPage({ params }: { params: { category: string } 
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
-                        src="/images/gallery-cover-work.jpg"
+                        src="https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg"
                         alt="Photo 8"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Row 5 */}
+            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+              <div className="md:col-span-5 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-[360px] relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src="https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg"
+                        alt="Photo 9"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="md:col-span-7 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-[360px] relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src="https://moa.ie/wp-content/uploads/2021/04/Moa_Carbon_Front_Crop_2.jpg"
+                        alt="Photo 10"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
