@@ -95,14 +95,22 @@ export default function CategoryPage({ params }: { params: { category: string } 
         {/* 照片网格 */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {photos.map((photo, index) => (
+            {photos.slice(0, 6).map((photo, index) => (
               <div 
                 key={photo.id}
                 className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-                  index === 0 ? 'md:col-span-7' : index === 1 ? 'md:col-span-5' : 'md:col-span-4'
+                  index === 0 ? 'md:col-span-7' : 
+                  index === 1 ? 'md:col-span-5' : 
+                  index === 5 ? 'md:col-span-7 h-[500px]' :
+                  'md:col-span-4'
                 }`}
               >
-                <div className="h-[360px] w-full relative">
+                <div className={`w-full relative ${
+                  index < 2 ? 'h-[300px]' : 
+                  index < 5 ? 'h-[360px]' :
+                  index === 5 ? 'h-[500px]' :
+                  'h-[360px]'
+                }`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
@@ -129,16 +137,26 @@ export default function CategoryPage({ params }: { params: { category: string } 
                     )}
                   </div>
                 </div>
-                {index !== 0 && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-xl font-medium mb-2">{photo.title}</h3>
-                      <p className="text-sm text-gray-200">{photo.description}</p>
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
+            {/* 右侧两个垂直排列的卡片 */}
+            <div className="md:col-span-5 flex flex-col h-[500px] gap-4">
+              {photos.slice(0, 2).map((photo, index) => (
+                <div key={`right-${index}`} className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex-1">
+                  <div className="w-full h-full relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                      <div className="w-full h-full overflow-hidden rounded-lg">
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
