@@ -11,6 +11,9 @@ module.exports = {
         primary: '#000000',
         secondary: '#ffffff',
       },
+      fontFamily: {
+        cormorant: ['var(--font-cormorant)'],
+      },
     },
   },
   plugins: [],

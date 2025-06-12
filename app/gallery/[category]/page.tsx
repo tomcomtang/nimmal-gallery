@@ -1,5 +1,12 @@
 import { Metadata } from 'next'
 import Footer from '@/app/components/Footer'
+import { Cormorant } from 'next/font/google'
+
+const cormorant = Cormorant({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-cormorant'
+})
 
 // 定义类别信息
 const categoryInfo = {
@@ -79,7 +86,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
   const info = categoryInfo[category] || { title: 'Gallery', description: 'Photo Gallery' }
 
   return (
-    <div className="min-h-screen pt-20 pb-12">
+    <div className={`min-h-screen pt-20 pb-12 ${cormorant.variable} font-cormorant`}>
       {/* 内容层 */}
       <div className="container mx-auto px-4 relative z-10 pt-8">
 
@@ -102,7 +109,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
                   index === 5 ? 'h-[500px]' :
                   'h-[360px]'
                 }`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
                         src={photo.src}
@@ -114,13 +121,13 @@ export default function CategoryPage({ params }: { params: { category: string } 
                       <>
                         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/80" />
                         <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
-                          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
+                          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6 tracking-wider">
                             {info.title}
                           </h2>
-                          <p className="text-lg text-gray-700 mb-6 max-w-2xl">
+                          <p className="text-lg text-gray-700 mb-6 max-w-2xl italic">
                             {info.description}
                           </p>
-                          <p className="text-base text-gray-600 max-w-2xl">
+                          <p className="text-base text-gray-600 max-w-2xl italic">
                             Photography has been my passion for over a decade. Through this gallery, I hope to share not just images, but the emotions and stories behind them. Every shot is a window into a moment that moved me, and I'm excited to share these moments with you.
                           </p>
                         </div>
@@ -135,7 +142,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
               {photos.slice(0, 2).map((photo, index) => (
                 <div key={`right-${index}`} className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex-1">
                   <div className="w-full h-full relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                       <div className="w-full h-full overflow-hidden rounded-lg">
                         <img
                           src={photo.src}
@@ -152,7 +159,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
             <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
               <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
                         src="/images/gallery-cover-work.jpg"
@@ -165,7 +172,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
               </div>
               <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
                         src="/images/gallery-cover-work.jpg"
