@@ -2,8 +2,9 @@ import Link from 'next/link'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Featured', href: '/gallery/1' },
+  { name: 'Work', href: '/gallery/work' },
+  { name: 'Life', href: '/gallery/life' },
+  { name: 'Travel', href: '/gallery/travel' },
 ]
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-gray-800">
-            MOA Gallery
+            Gallery
           </Link>
 
           {/* Navigation Links */}

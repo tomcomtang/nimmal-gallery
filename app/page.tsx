@@ -89,27 +89,17 @@ export default function Home() {
 
             {/* 右侧介绍区域 */}
             <div className="flex flex-col justify-center relative z-20">
-              <h2 className="text-3xl font-semibold mb-6 text-gray-900">Pioneering Garden Studios</h2>
-              <p className="text-lg text-gray-800 mb-8">
-                We create innovative, design-focused Garden Rooms. With a focus on quality and sustainability, 
-                our studios are handcrafted with you in mind.
+              <h2 className="text-4xl font-light mb-4 text-gray-900">
+                Capturing Life's Moments
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 italic">
+                Through the lens of a storyteller
               </p>
-              <div className="space-y-4">
-                <p className="text-gray-700">
-                  • Premium materials and craftsmanship
-                </p>
-                <p className="text-gray-700">
-                  • Sustainable and eco-friendly design
-                </p>
-                <p className="text-gray-700">
-                  • Custom solutions for your space
-                </p>
-              </div>
               <Link
                 href="/gallery"
-                className="mt-8 inline-block px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors w-fit"
               >
-                View Our Gallery
+                Explore Gallery
               </Link>
             </div>
           </div>
