@@ -28,6 +28,7 @@ body {
     rgb(var(--background-start-rgb)),
     rgb(var(--background-end-rgb))
   );
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
 }
