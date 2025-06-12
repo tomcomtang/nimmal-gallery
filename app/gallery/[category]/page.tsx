@@ -4,8 +4,8 @@ import Footer from '@/app/components/Footer'
 // 定义类别信息
 const categoryInfo = {
   work: {
-    title: '',
-    description: '',
+    title: 'Work',
+    description: 'Showcasing professional projects and creative works',
   },
   life: {
     title: 'Life',
@@ -81,16 +81,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
   return (
     <div className="min-h-screen pt-20 pb-12">
       {/* 内容层 */}
-      <div className="container mx-auto px-4 relative z-10">
-        {/* 页面标题和描述 */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-light mb-4 text-gray-900">
-            {info.title}
-          </h1>
-          <p className="text-lg text-gray-600">
-            {info.description}
-          </p>
-        </div>
+      <div className="container mx-auto px-4 relative z-10 pt-8">
 
         {/* 照片网格 */}
         <div className="max-w-7xl mx-auto">
@@ -124,10 +115,10 @@ export default function CategoryPage({ params }: { params: { category: string } 
                         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/80" />
                         <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
                           <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                            Welcome to My Gallery
+                            {info.title}
                           </h2>
                           <p className="text-lg text-gray-700 mb-6 max-w-2xl">
-                            Here you'll find a collection of my favorite moments and creative works. Each image tells a unique story, capturing the beauty of life through my lens.
+                            {info.description}
                           </p>
                           <p className="text-base text-gray-600 max-w-2xl">
                             Photography has been my passion for over a decade. Through this gallery, I hope to share not just images, but the emotions and stories behind them. Every shot is a window into a moment that moved me, and I'm excited to share these moments with you.
@@ -156,6 +147,35 @@ export default function CategoryPage({ params }: { params: { category: string } 
                   </div>
                 </div>
               ))}
+            </div>
+            {/* 第四行布局 */}
+            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+              <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-[360px] relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src="/images/gallery-cover-work.jpg"
+                        alt="Photo 7"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-full h-[360px] relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src="/images/gallery-cover-work.jpg"
+                        alt="Photo 8"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
