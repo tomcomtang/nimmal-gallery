@@ -98,17 +98,19 @@ export default function CategoryPage({ params }: { params: { category: string } 
             {photos.map((photo, index) => (
               <div 
                 key={photo.id}
-                className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+                className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
                   index === 0 ? 'md:col-span-7' : index === 1 ? 'md:col-span-5' : 'md:col-span-4'
                 }`}
               >
                 <div className="h-[360px] w-full relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
                     {index === 0 && (
                       <>
                         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/80" />
