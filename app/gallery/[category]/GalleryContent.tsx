@@ -18,42 +18,66 @@ const photos = [
     src: "/images/gallery-cover-work.jpg",
     alt: "Photo 1",
     title: "Morning Light",
-    description: "Captured in the early hours of dawn"
+    description: "Captured in the early hours of dawn",
+    galleryInfo: {
+      title: "Morning Light Gallery",
+      description: "A collection of photographs capturing the ethereal beauty of morning light. Each image tells a story of dawn's first rays touching the world."
+    }
   },
   {
     id: 2,
     src: "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
     alt: "Photo 2",
     title: "Urban Life",
-    description: "The rhythm of city streets"
+    description: "The rhythm of city streets",
+    galleryInfo: {
+      title: "Urban Life Gallery",
+      description: "Exploring the vibrant energy of city life through street photography. From bustling markets to quiet alleyways, each frame captures the essence of urban existence."
+    }
   },
   {
     id: 3,
     src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
     alt: "Photo 3",
     title: "Natural Beauty",
-    description: "Exploring the wonders of nature"
+    description: "Exploring the wonders of nature",
+    galleryInfo: {
+      title: "Natural Beauty Gallery",
+      description: "A journey through nature's most breathtaking landscapes. From majestic mountains to serene lakes, each photograph celebrates the beauty of our natural world."
+    }
   },
   {
     id: 4,
     src: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
     alt: "Photo 4",
     title: "Architectural Details",
-    description: "The art of built environment"
+    description: "The art of built environment",
+    galleryInfo: {
+      title: "Architectural Details Gallery",
+      description: "A close look at the intricate details of architectural masterpieces. Each image reveals the hidden beauty in the structures that surround us."
+    }
   },
   {
     id: 5,
     src: "https://moa.ie/wp-content/uploads/2021/04/Moa_Carbon_Front_Crop_2.jpg",
     alt: "Photo 5",
     title: "Street Stories",
-    description: "Everyday moments in the city"
+    description: "Everyday moments in the city",
+    galleryInfo: {
+      title: "Street Stories Gallery",
+      description: "Capturing the candid moments that make up city life. Each photograph is a window into the stories that unfold on our streets every day."
+    }
   },
   {
     id: 6,
     src: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
     alt: "Photo 6",
     title: "Urban Geometry",
-    description: "Lines and shapes in the cityscape"
+    description: "Lines and shapes in the cityscape",
+    galleryInfo: {
+      title: "Urban Geometry Gallery",
+      description: "Exploring the geometric patterns and shapes that define our urban landscape. Each image reveals the mathematical beauty hidden in our cities."
+    }
   },
 ]
 
@@ -68,6 +92,7 @@ interface GalleryContentProps {
 export default function GalleryContent({ category, info }: GalleryContentProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<typeof photos[0] | null>(null)
   const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
+  const [currentGalleryInfo, setCurrentGalleryInfo] = useState(info)
 
   const handlePhotoClick = (photo: typeof photos[0], event: React.MouseEvent) => {
     const rect = (event.target as HTMLElement).getBoundingClientRect()
@@ -78,6 +103,19 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
       height: rect.height
     })
     setSelectedPhoto(photo)
+    setCurrentGalleryInfo(photo.galleryInfo)
+  }
+
+  const handleNextGallery = () => {
+    if (selectedPhoto) {
+      const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id)
+      const nextIndex = (currentIndex + 1) % photos.length
+      const nextPhoto = photos[nextIndex]
+      setSelectedPhoto(nextPhoto)
+      setCurrentGalleryInfo(nextPhoto.galleryInfo)
+      // 保持当前的位置信息不变，这样动画会更流畅
+      setSelectedPhotoPosition(prev => prev)
+    }
   }
 
   const handleClose = () => {
@@ -273,11 +311,21 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 onClick={e => e.stopPropagation()}
               >
                 <div className="w-2/3 relative">
-                  <img
-                    src={selectedPhoto.src}
-                    alt={selectedPhoto.alt}
-                    className="w-full h-full object-cover"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={selectedPhoto.id}
+                      src={selectedPhoto.src}
+                      alt={selectedPhoto.alt}
+                      className="w-full h-full object-cover"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.05 }}
+                      transition={{ 
+                        duration: 0.5,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </AnimatePresence>
                 </div>
                 <motion.div 
                   initial={{ width: 0 }}
@@ -296,15 +344,41 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                       duration: 0.6,
                       delay: 0.8 
                     }}
+                    className="flex flex-col h-full"
                   >
-                    <h3 className="text-2xl font-medium mb-4">{selectedPhoto.title}</h3>
-                    <p className="text-gray-600 mb-6">{selectedPhoto.description}</p>
-                    <button 
-                      className="mt-auto text-gray-500 hover:text-gray-700"
-                      onClick={handleClose}
-                    >
-                      Close
-                    </button>
+                    {/* 相册名称 */}
+                    <h2 className="text-3xl font-medium mb-4 text-gray-900">
+                      {currentGalleryInfo.title}
+                    </h2>
+                    
+                    {/* 相册备注 */}
+                    <p className="text-gray-600 mb-8 flex-grow">
+                      {currentGalleryInfo.description}
+                    </p>
+
+                    {/* 按钮组 */}
+                    <div className="space-y-4">
+                      <button 
+                        className="w-full py-2 px-4 bg-amber-100/80 text-gray-800 rounded-lg hover:bg-amber-100 transition-colors"
+                        onClick={() => window.location.href = `/gallery/${category}/detail`}
+                      >
+                        View Gallery Details
+                      </button>
+                      
+                      <button 
+                        className="w-full py-2 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                        onClick={handleNextGallery}
+                      >
+                        Next Gallery
+                      </button>
+
+                      <button 
+                        className="w-full py-2 px-4 text-gray-500 hover:text-gray-700 transition-colors"
+                        onClick={handleClose}
+                      >
+                        Close
+                      </button>
+                    </div>
                   </motion.div>
                 </motion.div>
               </motion.div>
