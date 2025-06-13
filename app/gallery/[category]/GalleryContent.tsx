@@ -92,6 +92,78 @@ const photos = [
       "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg"
     ]
   },
+  {
+    id: 7,
+    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
+    alt: "Photo 7",
+    title: "City Lights",
+    description: "The magic of urban nights",
+    galleryInfo: {
+      title: "City Lights Gallery",
+      description: "A nocturnal journey through the city's illuminated landscapes. Each photograph captures the unique atmosphere of urban nightlife."
+    },
+    photoCount: 19
+  },
+  {
+    id: 8,
+    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
+    alt: "Photo 8",
+    title: "Portrait Stories",
+    description: "Faces and emotions",
+    galleryInfo: {
+      title: "Portrait Stories Gallery",
+      description: "A collection of intimate portraits that tell stories through expressions and emotions. Each face reveals a unique narrative."
+    },
+    photoCount: 25
+  },
+  {
+    id: 9,
+    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
+    alt: "Photo 9",
+    title: "Abstract Moments",
+    description: "Finding beauty in chaos",
+    galleryInfo: {
+      title: "Abstract Moments Gallery",
+      description: "Exploring the abstract beauty in everyday scenes. Each image challenges our perception of reality."
+    },
+    photoCount: 16
+  },
+  {
+    id: 10,
+    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_Carbon_Front_Crop_2.jpg",
+    alt: "Photo 10",
+    title: "Seasonal Changes",
+    description: "Nature's transformation",
+    galleryInfo: {
+      title: "Seasonal Changes Gallery",
+      description: "Documenting the beautiful transitions between seasons. Each photograph captures nature's ever-changing palette."
+    },
+    photoCount: 28
+  },
+  {
+    id: 11,
+    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
+    alt: "Photo 11",
+    title: "Urban Patterns",
+    description: "The rhythm of the city",
+    galleryInfo: {
+      title: "Urban Patterns Gallery",
+      description: "Discovering the repetitive patterns and rhythms that make up our urban environment. Each image reveals the hidden order in city chaos."
+    },
+    photoCount: 22
+  },
+  {
+    id: 12,
+    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
+    alt: "Photo 3",
+    title: "Natural Beauty",
+    description: "Exploring the wonders of nature",
+    galleryInfo: {
+      title: "Natural Beauty Gallery",
+      description: "A journey through nature's most breathtaking landscapes. From majestic mountains to serene lakes, each photograph celebrates the beauty of our natural world."
+    },
+    photoCount: 32
+  }
 ]
 
 interface GalleryContentProps {
@@ -140,53 +212,28 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
         {/* Photo Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {photos.slice(0, 6).map((photo, index) => (
-              <div 
-                key={photo.id}
-                className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-                  index === 0 ? 'md:col-span-7' : 
-                  index === 1 ? 'md:col-span-5' : 
-                  index === 5 ? 'md:col-span-7 h-[500px]' :
-                  'md:col-span-4'
-                } ${index === 0 ? '' : 'cursor-pointer'}`}
-                onClick={(e) => {
-                  if (index !== 0) {
-                    handlePhotoClick(photo, e)
-                  }
-                }}
-              >
-                <div className={`w-full relative ${
-                  index < 2 ? 'h-[300px]' : 
-                  index < 5 ? 'h-[360px]' :
-                  index === 5 ? 'h-[500px]' :
-                  'h-[360px]'
-                }`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      {photo.useGrid ? (
-                        <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
-                          {photo.coverImages.map((imgSrc, imgIndex) => (
-                            <div key={imgIndex} className="relative overflow-hidden">
-                              <img
-                                src={imgSrc}
-                                alt={`${photo.title} - Preview ${imgIndex + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
+            {/* First two albums wrapped in a div */}
+            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+              {photos.slice(0, 2).map((photo, index) => (
+                <div 
+                  key={photo.id}
+                  className={`md:col-span-${index === 0 ? '7' : '5'} group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${index === 1 ? 'cursor-pointer' : ''}`}
+                  onClick={index === 1 ? (e) => handlePhotoClick(photo, e) : undefined}
+                >
+                  <div className="w-full h-[300px] relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                      <div className="w-full h-full overflow-hidden rounded-lg">
                         <img
                           src={photo.src}
                           alt={photo.alt}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                      )}
-                      {/* Photo count label */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                        <span className="text-sm font-medium text-gray-700">
-                          {photo.photoCount} Photos
-                        </span>
+                        {/* Photo count label */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                          <span className="text-sm font-medium text-gray-700">
+                            {photo.photoCount} Photos
+                          </span>
+                        </div>
                       </div>
                     </div>
                     {index === 0 && (
@@ -207,11 +254,91 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     )}
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Rest of the albums */}
+              {photos.slice(2, 5).map((photo, index) => (
+                <div 
+                  key={photo.id}
+                  className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 md:col-span-4 cursor-pointer`}
+                  onClick={(e) => handlePhotoClick(photo, e)}
+                >
+                  <div className={`w-full relative h-[360px]`}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                      <div className="w-full h-full overflow-hidden rounded-lg">
+                        {photo.useGrid ? (
+                          <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
+                            {photo.coverImages.map((imgSrc, imgIndex) => (
+                              <div key={imgIndex} className="relative overflow-hidden">
+                                <img
+                                  src={imgSrc}
+                                  alt={`${photo.title} - Preview ${imgIndex + 1}`}
+                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <img
+                            src={photo.src}
+                            alt={photo.alt}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                        )}
+                        {/* Photo count label */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                          <span className="text-sm font-medium text-gray-700">
+                            {photo.photoCount} Photos
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            {photos.slice(5, 6).map((photo, index) => (
+                          <div 
+                            key={photo.id}
+                            className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 md:col-span-7 h-[500px] cursor-pointer`}
+                            onClick={(e) => handlePhotoClick(photo, e)}
+                          >
+                            <div className={`w-full relative h-[500px]`}>
+                              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                                <div className="w-full h-full overflow-hidden rounded-lg">
+                                  {photo.useGrid ? (
+                                    <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
+                                      {photo.coverImages.map((imgSrc, imgIndex) => (
+                                        <div key={imgIndex} className="relative overflow-hidden">
+                                          <img
+                                            src={imgSrc}
+                                            alt={`${photo.title} - Preview ${imgIndex + 1}`}
+                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                          />
+                                        </div>
+                                      ))}
+                                    </div>
+                                  ) : (
+                                    <img
+                                      src={photo.src}
+                                      alt={photo.alt}
+                                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    />
+                                  )}
+                                  {/* Photo count label */}
+                                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                                    <span className="text-sm font-medium text-gray-700">
+                                      {photo.photoCount} Photos
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
             {/* Right side vertical cards */}
             <div className="md:col-span-5 flex flex-col h-[500px] gap-4">
-              {photos.slice(0, 2).map((photo, index) => (
+              {photos.slice(6, 8).map((photo, index) => (
                 <div 
                   key={`right-${index}`} 
                   className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex-1 cursor-pointer"
@@ -237,71 +364,73 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 </div>
               ))}
             </div>
+
             {/* Fourth row layout */}
             <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
-              <div 
-                className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={(e) => handlePhotoClick(photos[1], e)}
-              >
-                <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photos[1].src}
-                        alt={photos[1].alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      {/* Photo count label */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                        <span className="text-sm font-medium text-gray-700">
-                          {photos[1].photoCount} Photos
-                        </span>
+              <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={(e) => handlePhotoClick(photos[8], e)}
+                >
+                  <div className="w-full h-[360px] relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                      <div className="w-full h-full overflow-hidden rounded-lg">
+                        <img
+                          src={photos[8].src}
+                          alt={photos[8].alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        {/* Photo count label */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                          <span className="text-sm font-medium text-gray-700">
+                            {photos[8].photoCount} Photos
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div 
-                className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={(e) => handlePhotoClick(photos[2], e)}
-              >
-                <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photos[2].src}
-                        alt={photos[2].alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      {/* Photo count label */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                        <span className="text-sm font-medium text-gray-700">
-                          {photos[2].photoCount} Photos
-                        </span>
+                <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={(e) => handlePhotoClick(photos[9], e)}
+                >
+                  <div className="w-full h-[360px] relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                      <div className="w-full h-full overflow-hidden rounded-lg">
+                        <img
+                          src={photos[9].src}
+                          alt={photos[9].alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        {/* Photo count label */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                          <span className="text-sm font-medium text-gray-700">
+                            {photos[9].photoCount} Photos
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             {/* Row 5 */}
             <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
               <div 
                 className="md:col-span-5 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={(e) => handlePhotoClick(photos[3], e)}
+                onClick={(e) => handlePhotoClick(photos[10], e)}
               >
                 <div className="w-full h-[360px] relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
-                        src={photos[3].src}
-                        alt={photos[3].alt}
+                        src={photos[10].src}
+                        alt={photos[10].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
-                          {photos[3].photoCount} Photos
+                          {photos[10].photoCount} Photos
                         </span>
                       </div>
                     </div>
@@ -316,14 +445,14 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
-                        src={photos[4].src}
-                        alt={photos[4].alt}
+                        src={photos[11].src}
+                        alt={photos[11].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
-                          {photos[4].photoCount} Photos
+                          {photos[11].photoCount} Photos
                         </span>
                       </div>
                     </div>
