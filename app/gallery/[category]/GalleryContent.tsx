@@ -137,9 +137,9 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   }
 
   return (
-    <div className={`min-h-screen pt-20 pb-12 ${cormorant.variable} font-cormorant`}>
+    <div className={`min-h-screen pt-40 pb-12 ${cormorant.variable} font-cormorant`}>
       {/* 内容层 */}
-      <div className="container mx-auto px-4 relative z-10 pt-8">
+      <div className="container mx-auto px-4 relative z-10">
         {/* 照片网格 */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -152,7 +152,13 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   index === 5 ? 'md:col-span-7 h-[500px]' :
                   'md:col-span-4'
                 }`}
-                onClick={(e) => handlePhotoClick(photo, e)}
+                onClick={(e) => {
+                  if (index === 0) {
+                    handlePhotoClick(photo, e)
+                  } else {
+                    window.location.href = `/gallery/${category}/${photo.id}`
+                  }
+                }}
               >
                 <div className={`w-full relative ${
                   index < 2 ? 'h-[300px]' : 

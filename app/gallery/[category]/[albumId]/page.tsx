@@ -1,186 +1,308 @@
-import { Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
 
-type Category = 'work' | 'life' | 'travel'
-
-interface CategoryInfo {
-  title: string
-  description: string
-}
-
-interface Photo {
-  id: number
-  src: string
-  alt: string
-  title: string
-  description: string
-}
-
-interface Album {
-  title: string
-  description: string
-  coverImage: string
-  photos: Photo[]
-}
-
-interface Albums {
-  [key: string]: {
-    [key: string]: Album
+// 布局模板定义
+const layoutTemplates = [
+  // 模板1：交错布局
+  {
+    id: 1,
+    name: 'Staggered',
+    layout: [
+      { size: 'medium', position: 'left' },
+      { size: 'large', position: 'center' },
+      { size: 'small', position: 'right-top' },
+      { size: 'small', position: 'right-bottom' }
+    ]
+  },
+  // 模板2：大图居中，两侧小图
+  {
+    id: 2,
+    name: 'Center Focus',
+    layout: [
+      { size: 'small', position: 'top-left' },
+      { size: 'large', position: 'center' },
+      { size: 'small', position: 'top-right' },
+      { size: 'medium', position: 'bottom-left' },
+      { size: 'medium', position: 'bottom-right' }
+    ]
+  },
+  // 模板3：对称布局
+  {
+    id: 3,
+    name: 'Symmetric',
+    layout: [
+      { size: 'large', position: 'left' },
+      { size: 'medium', position: 'right-top' },
+      { size: 'medium', position: 'right-bottom' }
+    ]
   }
-}
-
-// 定义类别信息
-const categoryInfo: Record<Category, CategoryInfo> = {
-  work: {
-    title: 'Work',
-    description: 'Professional photography showcasing creative works and projects',
-  },
-  life: {
-    title: 'Life',
-    description: 'Capturing the beauty of everyday moments and personal stories',
-  },
-  travel: {
-    title: 'Travel',
-    description: 'Exploring the world through the lens of a photographer',
-  },
-}
+]
 
 // 示例相册数据
-const albums: Albums = {
-  work: {
-    'commercial-2024': {
-      title: 'Commercial 2024',
-      description: 'Commercial photography projects from 2024',
-      coverImage: "https://moa.ie/wp-content/uploads/2021/08/Hero_home_1-scaledV2-1.jpg",
-      photos: [
-        {
-          id: 1,
-          src: "https://moa.ie/wp-content/uploads/2021/08/Hero_home_1-scaledV2-1.jpg",
-          alt: "Commercial Photo 1",
-          title: "Product Showcase",
-          description: "Professional product photography"
-        },
-        {
-          id: 2,
-          src: "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
-          alt: "Commercial Photo 2",
-          title: "Brand Campaign",
-          description: "Corporate brand photography"
-        }
-      ]
+const albumData = {
+  id: 'urban-geometry',
+  title: 'Urban Geometry',
+  description: 'Discover the hidden patterns of city life.',
+  photos: [
+    {
+      id: 'ug1',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 1',
+      title: 'City Patterns',
+      description: 'Urban Geometry 1',
+      size: 'large'
+    },
+    {
+      id: 'ug2',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 2',
+      title: 'Urban Geometry 2',
+      description: 'Urban Geometry 2',
+      size: 'medium'
+    },
+    {
+      id: 'ug3',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 3',
+      title: 'Urban Geometry 3',
+      description: 'Urban Geometry 3',
+      size: 'medium'
+    },
+    {
+      id: 'ug4',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 4',
+      title: 'Urban Geometry 4',
+      description: 'Urban Geometry 4',
+      size: 'small'
+    },
+    {
+      id: 'ug5',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 5',
+      title: 'Urban Geometry 5',
+      description: 'Urban Geometry 5',
+      size: 'small'
+    },
+    {
+      id: 'ug6',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 6',
+      title: 'Urban Geometry 6',
+      description: 'Urban Geometry 6',
+      size: 'small'
+    },
+    {
+      id: 'ug7',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 7',
+      title: 'Urban Geometry 7',
+      description: 'Urban Geometry 7',
+      size: 'small'
+    },
+    {
+      id: 'ug8',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 8',
+      title: 'Urban Geometry 8',
+      description: 'Urban Geometry 8',
+      size: 'small'
     }
-  },
-  life: {
-    'daily-life': {
-      title: 'Daily Life',
-      description: 'Capturing the beauty of everyday moments',
-      coverImage: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
-      photos: [
-        {
-          id: 1,
-          src: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
-          alt: "Daily Life Photo 1",
-          title: "Morning Coffee",
-          description: "A quiet moment in the morning"
-        }
-      ]
-    }
-  },
-  travel: {
-    'europe-2024': {
-      title: 'Europe 2024',
-      description: 'Photography journey through Europe',
-      coverImage: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
-      photos: [
-        {
-          id: 1,
-          src: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
-          alt: "Europe Photo 1",
-          title: "Paris Streets",
-          description: "The charm of Parisian architecture"
-        }
-      ]
-    }
+  ]
+}
+
+interface PageProps {
+  params: {
+    category: string
+    albumId: string
   }
 }
 
-// 生成元数据
-export async function generateMetadata({ params }: { params: { category: string; albumId: string } }): Promise<Metadata> {
-  const category = params.category as Category
-  const albumId = params.albumId
-  const album = albums[category]?.[albumId]
-  const info = categoryInfo[category]
-  
-  return {
-    title: album ? `${album.title} - ${info.title}` : 'Album',
-    description: album?.description || 'Photo Album',
+export default function AlbumDetail({ params }: PageProps) {
+  const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null)
+  const [currentLayout, setCurrentLayout] = useState(0)
+
+  const handlePhotoClick = (index: number) => {
+    setSelectedPhoto(index)
   }
-}
 
-export default function AlbumPage({ params }: { params: { category: string; albumId: string } }) {
-  const category = params.category as Category
-  const albumId = params.albumId
-  const album = albums[category]?.[albumId]
-  const info = categoryInfo[category]
+  const handleClose = () => {
+    setSelectedPhoto(null)
+  }
 
-  if (!album) {
-    return (
-      <div className="min-h-screen pt-20 pb-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-2xl text-center">Album not found</h1>
-        </div>
-      </div>
-    )
+  const handlePrevious = () => {
+    if (selectedPhoto !== null) {
+      setSelectedPhoto((selectedPhoto - 1 + albumData.photos.length) % albumData.photos.length)
+    }
+  }
+
+  const handleNext = () => {
+    if (selectedPhoto !== null) {
+      setSelectedPhoto((selectedPhoto + 1) % albumData.photos.length)
+    }
+  }
+
+  const handleLayoutChange = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setCurrentLayout((prev) => (prev - 1 + layoutTemplates.length) % layoutTemplates.length)
+    } else {
+      setCurrentLayout((prev) => (prev + 1) % layoutTemplates.length)
+    }
+  }
+
+  // 获取照片尺寸的类名
+  const getPhotoSizeClass = (size: string) => {
+    switch (size) {
+      case 'large':
+        return 'col-span-2 row-span-2'
+      case 'medium':
+        return 'col-span-1 row-span-2'
+      case 'small':
+        return 'col-span-1 row-span-1'
+      default:
+        return 'col-span-1 row-span-1'
+    }
+  }
+
+  // 获取当前布局的照片
+  const getCurrentLayoutPhotos = () => {
+    const template = layoutTemplates[currentLayout]
+    return template.layout.map((item, index) => ({
+      ...albumData.photos[index % albumData.photos.length],
+      size: item.size
+    }))
   }
 
   return (
-    <div className="min-h-screen pt-20 pb-12">
-      {/* 背景层 */}
-      <div className="fixed inset-0 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 opacity-50" />
-      
-      {/* 内容层 */}
-      <div className="container mx-auto px-4 relative z-10">
-        {/* 返回按钮和标题 */}
-        <div className="max-w-6xl mx-auto mb-12">
-          <Link 
-            href={`/gallery/${category}`}
-            className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to {info.title}
-          </Link>
-          <h1 className="text-4xl font-light mb-4 text-gray-900">
-            {album.title}
-          </h1>
-          <p className="text-lg text-gray-600">
-            {album.description}
-          </p>
-        </div>
+    <div className="min-h-screen flex flex-col">
+      {/* 导航栏 */}
+      <Navbar />
 
-        {/* 照片网格 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {album.photos.map((photo: Photo) => (
-            <div 
-              key={photo.id}
-              className="group relative aspect-[4/3] bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+      {/* 主要内容区域 */}
+      <main className="flex-grow pt-40 pb-4">
+        {/* 背景层 */}
+        <div className="fixed inset-0 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 opacity-50" />
+        
+        {/* 内容层 */}
+        <div className="container mx-auto px-4 relative z-10">
+          {/* 返回按钮 */}
+          <div className="max-w-6xl mx-auto mb-2">
+            <Link 
+              href={`/gallery/${params.category}`}
+              className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <ChevronLeft size={20} className="mr-2" />
+              Back to Gallery
+            </Link>
+          </div>
+
+          {/* 相册信息区域 */}
+          <div className="max-w-6xl mx-auto mb-2">
+            <div className="text-center">
+              <h1 className="text-2xl font-light text-gray-900">{albumData.title}</h1>
+              <p className="text-sm text-gray-600 mt-1 max-w-2xl mx-auto">{albumData.description}</p>
+            </div>
+          </div>
+
+          {/* 照片网格 */}
+          <div className="max-w-6xl mx-auto h-[550px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentLayout}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
+              >
+                {getCurrentLayoutPhotos().map((photo, index) => (
+                  <motion.div
+                    key={`${currentLayout}-${photo.id}`}
+                    className={`relative group cursor-pointer ${getPhotoSizeClass(photo.size)}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onClick={() => handlePhotoClick(index)}
+                  >
+                    <div className="w-full h-full overflow-hidden rounded-lg">
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* 翻页控件 */}
+          <div className="max-w-6xl mx-auto mt-2 flex justify-center items-center gap-4">
+            <button
+              onClick={() => handleLayoutChange('prev')}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
+              disabled={currentLayout === 0}
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <span className="text-sm font-medium text-gray-600">
+              {currentLayout + 1} / {layoutTemplates.length}
+            </span>
+            <button
+              onClick={() => handleLayoutChange('next')}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
+              disabled={currentLayout === layoutTemplates.length - 1}
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </main>
+
+      {/* 页脚 */}
+      <Footer />
+
+      {/* 照片预览浮层 */}
+      <AnimatePresence>
+        {selectedPhoto !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-4xl w-full"
+              onClick={e => e.stopPropagation()}
             >
               <img
-                src={photo.src}
-                alt={photo.alt}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src={getCurrentLayoutPhotos()[selectedPhoto].src}
+                alt={getCurrentLayoutPhotos()[selectedPhoto].alt}
+                className="w-full h-auto rounded-lg shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-xl font-medium mb-2">{photo.title}</h3>
-                  <p className="text-sm text-gray-200">{photo.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 } 
