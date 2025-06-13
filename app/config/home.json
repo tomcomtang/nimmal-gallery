@@ -1,0 +1,92 @@
+{
+  "hero": {
+    "title": "Capturing Moments, Creating Memories",
+    "subtitle": "Professional Photography Services",
+    "description": "Specializing in capturing the essence of life's most precious moments through the lens of artistic photography.",
+    "backgroundImage": "/images/gallery/nature/nature_1.jpg",
+    "ctaText": "View Gallery",
+    "ctaLink": "/gallery/nature"
+  },
+  "featured": {
+    "title": "Featured Collections",
+    "description": "Explore our curated selection of stunning photographs",
+    "collections": [
+      {
+        "id": "nature-1",
+        "title": "Nature's Beauty",
+        "description": "Capturing the raw beauty of natural landscapes",
+        "image": "/images/gallery/nature/nature_2.jpg",
+        "link": "/gallery/nature"
+      },
+      {
+        "id": "urban-1",
+        "title": "Urban Life",
+        "description": "The vibrant energy of city streets",
+        "image": "/images/gallery/urban/urban_1.jpg",
+        "link": "/gallery/urban"
+      },
+      {
+        "id": "travel-1",
+        "title": "Travel Adventures",
+        "description": "Journeys and discoveries around the world",
+        "image": "/images/gallery/travel/travel_1.jpg",
+        "link": "/gallery/travel"
+      },
+      {
+        "id": "architecture-1",
+        "title": "Architectural Wonders",
+        "description": "Showcasing remarkable structures and designs",
+        "image": "/images/gallery/architecture/architecture_1.jpg",
+        "link": "/gallery/architecture"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Professional photography services tailored to your needs",
+    "items": [
+      {
+        "id": "service-1",
+        "title": "Portrait Photography",
+        "description": "Capturing your personality and essence in stunning portraits",
+        "icon": "camera"
+      },
+      {
+        "id": "service-2",
+        "title": "Event Coverage",
+        "description": "Comprehensive coverage of your special events and celebrations",
+        "icon": "calendar"
+      },
+      {
+        "id": "service-3",
+        "title": "Commercial Photography",
+        "description": "High-quality images for your business and marketing needs",
+        "icon": "briefcase"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "description": "What our clients say about our services",
+    "items": [
+      {
+        "id": "testimonial-1",
+        "content": "The attention to detail and artistic vision brought our wedding photos to life. Truly exceptional work!",
+        "author": "Sarah & John",
+        "role": "Wedding Clients"
+      },
+      {
+        "id": "testimonial-2",
+        "content": "Professional, creative, and incredibly talented. Our corporate event photos exceeded all expectations.",
+        "author": "Michael Chen",
+        "role": "Corporate Client"
+      },
+      {
+        "id": "testimonial-3",
+        "content": "The family portraits captured our personalities perfectly. We couldn't be happier with the results.",
+        "author": "The Williams Family",
+        "role": "Family Portrait Clients"
+      }
+    ]
+  }
+} 

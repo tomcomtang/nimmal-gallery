@@ -10,172 +10,14 @@ import MixedRow from '@/app/components/gallery/MixedRow'
 import TwoEqualRow from '@/app/components/gallery/TwoEqualRow'
 import TwoUnequalRow from '@/app/components/gallery/TwoUnequalRow'
 import { Photo } from '@/app/types/gallery'
+import Link from 'next/link'
+import { getAlbumsByCategory } from '@/app/utils/config'
 
 const cormorant = Cormorant({
   subsets: ['latin'],
   weight: ['300', '400', '500'],
   variable: '--font-cormorant'
 })
-
-// Sample photo data
-const photos: Photo[] = [
-  {
-    id: 1,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 1",
-    title: "Nature Collection",
-    description: "A beautiful collection of nature photographs showcasing the wonders of the natural world.",
-    photoCount: 24,
-    createdAt: "2024-03-15",
-    galleryInfo: {
-      title: "Nature Collection Gallery",
-      description: "A beautiful collection of nature photographs showcasing the wonders of the natural world."
-    }
-  },
-  {
-    id: 2,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 2",
-    title: "Urban Life",
-    description: "Capturing the essence of city life through unique perspectives and moments.",
-    photoCount: 18,
-    createdAt: "2024-03-14",
-    galleryInfo: {
-      title: "Urban Life Gallery",
-      description: "Capturing the essence of city life through unique perspectives and moments."
-    }
-  },
-  {
-    id: 3,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 3",
-    title: "Portrait Series",
-    description: "A series of intimate portraits revealing the depth of human emotion.",
-    photoCount: 12,
-    createdAt: "2024-03-13",
-    galleryInfo: {
-      title: "Portrait Series Gallery",
-      description: "A series of intimate portraits revealing the depth of human emotion."
-    }
-  },
-  {
-    id: 4,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 4",
-    title: "Architecture",
-    description: "Exploring the beauty of architectural design and structural forms.",
-    photoCount: 15,
-    createdAt: "2024-03-12",
-    galleryInfo: {
-      title: "Architecture Gallery",
-      description: "Exploring the beauty of architectural design and structural forms."
-    }
-  },
-  {
-    id: 5,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 5",
-    title: "Street Photography",
-    description: "Candid moments from the streets, telling stories of everyday life.",
-    photoCount: 20,
-    createdAt: "2024-03-11",
-    galleryInfo: {
-      title: "Street Photography Gallery",
-      description: "Candid moments from the streets, telling stories of everyday life."
-    }
-  },
-  {
-    id: 6,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 6",
-    title: "Landscape",
-    description: "Breathtaking landscapes from around the world.",
-    photoCount: 16,
-    createdAt: "2024-03-10",
-    galleryInfo: {
-      title: "Landscape Gallery",
-      description: "Breathtaking landscapes from around the world."
-    }
-  },
-  {
-    id: 7,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 7",
-    title: "Wildlife",
-    description: "Capturing the beauty and majesty of wildlife in their natural habitats.",
-    photoCount: 22,
-    createdAt: "2024-03-09",
-    galleryInfo: {
-      title: "Wildlife Gallery",
-      description: "Capturing the beauty and majesty of wildlife in their natural habitats."
-    }
-  },
-  {
-    id: 8,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 8",
-    title: "Abstract",
-    description: "Abstract compositions exploring form, color, and texture.",
-    photoCount: 14,
-    createdAt: "2024-03-08",
-    galleryInfo: {
-      title: "Abstract Gallery",
-      description: "Abstract compositions exploring form, color, and texture."
-    }
-  },
-  {
-    id: 9,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 9",
-    title: "Travel",
-    description: "Journeys and adventures captured through the lens.",
-    photoCount: 19,
-    createdAt: "2024-03-07",
-    galleryInfo: {
-      title: "Travel Gallery",
-      description: "Journeys and adventures captured through the lens."
-    }
-  },
-  {
-    id: 10,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 10",
-    title: "Food",
-    description: "Culinary delights and gastronomic experiences.",
-    photoCount: 17,
-    createdAt: "2024-03-06",
-    galleryInfo: {
-      title: "Food Gallery",
-      description: "Culinary delights and gastronomic experiences."
-    }
-  },
-  {
-    id: 11,
-    src: "/images/gallery-cover-work.jpg",
-    alt: "Gallery Photo 11",
-    title: "Fashion",
-    description: "Fashion photography showcasing style and elegance.",
-    photoCount: 21,
-    createdAt: "2024-03-05",
-    galleryInfo: {
-      title: "Fashion Gallery",
-      description: "Fashion photography showcasing style and elegance."
-    }
-  },
-  {
-    id: 12,
-    src: "/images/work-album-cover.jpg",
-    alt: "Gallery Photo 12",
-    title: "Sports",
-    description: "Dynamic moments from the world of sports.",
-    photoCount: 13,
-    createdAt: "2024-03-04",
-    galleryInfo: {
-      title: "Sports Gallery",
-      description: "Dynamic moments from the world of sports."
-    }
-  }
-]
 
 interface GalleryContentProps {
   category: string;
@@ -228,9 +70,28 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
     title: '',
     description: ''
   })
-
-  // 获取当前类别的图片
-  const photos = useMemo(() => getCategoryPhotos(category), [category])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentLayout, setCurrentLayout] = useState<'staggered' | 'center' | 'symmetric'>('staggered')
+  
+  // 从配置中获取相册数据
+  const photos = useMemo(() => {
+    const albums = getAlbumsByCategory(category)
+    return albums.map(album => ({
+      id: album.id,
+      src: album.coverImage,
+      alt: album.title,
+      title: album.title,
+      description: album.description,
+      photoCount: album.photoCount,
+      createdAt: album.createdAt,
+      galleryInfo: {
+        title: album.title,
+        description: album.description,
+        photoCount: album.photoCount,
+        createdAt: album.createdAt
+      }
+    }))
+  }, [category])
 
   // 生成随机布局
   const layouts = useMemo(() => {
