@@ -29,6 +29,12 @@ export default function TwoEqualRow({ photos, onPhotoClick }: TwoEqualRowProps) 
                       {photo.photoCount} Photos
                     </span>
                   </div>
+                  {/* 创建时间 */}
+                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                    <span className="text-sm font-medium text-gray-700">
+                      {new Date(photo.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

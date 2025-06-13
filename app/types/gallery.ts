@@ -11,4 +11,5 @@ export interface Photo {
   photoCount: number
   useGrid?: boolean
   coverImages?: string[]
+  createdAt: string
 } 
