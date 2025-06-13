@@ -9,96 +9,408 @@
           "title": "Mountain Majesty",
           "description": "Recording the magnificent scenery of majestic mountains",
           "coverImage": "/images/gallery/nature/nature_1.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-15"
+          "photoCount": 4,
+          "createdAt": "2024-03-15",
+          "photos": [
+            {
+              "id": "nature-1-1",
+              "url": "/images/gallery/nature/nature_1_1.jpg",
+              "title": "Mountain Peak",
+              "description": "The majestic mountain peak at sunset"
+            },
+            {
+              "id": "nature-1-2",
+              "url": "/images/gallery/nature/nature_1_2.jpg",
+              "title": "Mountain Range",
+              "description": "A panoramic view of the mountain range"
+            },
+            {
+              "id": "nature-1-3",
+              "url": "/images/gallery/nature/nature_1_3.jpg",
+              "title": "Mountain Lake",
+              "description": "A serene lake surrounded by mountains"
+            },
+            {
+              "id": "nature-1-4",
+              "url": "/images/gallery/nature/nature_1_4.jpg",
+              "title": "Mountain Trail",
+              "description": "A winding trail through the mountains"
+            }
+          ]
         },
         {
           "id": "nature-2",
           "title": "Forest Exploration",
           "description": "Exploring the magical world of mysterious forests",
           "coverImage": "/images/gallery/nature/nature_2.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-14"
+          "photoCount": 4,
+          "createdAt": "2024-03-14",
+          "photos": [
+            {
+              "id": "nature-2-1",
+              "url": "/images/gallery/nature/nature_2_1.jpg",
+              "title": "Forest Path",
+              "description": "A mysterious path through the forest"
+            },
+            {
+              "id": "nature-2-2",
+              "url": "/images/gallery/nature/nature_2_2.jpg",
+              "title": "Ancient Trees",
+              "description": "Majestic ancient trees reaching for the sky"
+            },
+            {
+              "id": "nature-2-3",
+              "url": "/images/gallery/nature/nature_2_3.jpg",
+              "title": "Forest Stream",
+              "description": "A crystal clear stream flowing through the forest"
+            },
+            {
+              "id": "nature-2-4",
+              "url": "/images/gallery/nature/nature_2_4.jpg",
+              "title": "Forest Canopy",
+              "description": "The dense canopy of the forest"
+            }
+          ]
         },
         {
           "id": "nature-3",
           "title": "Ocean Wonders",
           "description": "Showcasing the vastness and mystery of the ocean",
           "coverImage": "/images/gallery/nature/nature_3.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-13"
+          "photoCount": 4,
+          "createdAt": "2024-03-13",
+          "photos": [
+            {
+              "id": "nature-3-1",
+              "url": "/images/gallery/nature/nature_3_1.jpg",
+              "title": "Ocean Waves",
+              "description": "Powerful waves crashing on the shore"
+            },
+            {
+              "id": "nature-3-2",
+              "url": "/images/gallery/nature/nature_3_2.jpg",
+              "title": "Coral Reef",
+              "description": "Colorful coral reef under the sea"
+            },
+            {
+              "id": "nature-3-3",
+              "url": "/images/gallery/nature/nature_3_3.jpg",
+              "title": "Marine Life",
+              "description": "Diverse marine life in the ocean"
+            },
+            {
+              "id": "nature-3-4",
+              "url": "/images/gallery/nature/nature_3_4.jpg",
+              "title": "Ocean Sunset",
+              "description": "Beautiful sunset over the ocean"
+            }
+          ]
         },
         {
           "id": "nature-4",
           "title": "Sunrise & Sunset",
           "description": "Capturing the most beautiful moments of the day",
           "coverImage": "/images/gallery/nature/nature_4.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-12"
+          "photoCount": 4,
+          "createdAt": "2024-03-12",
+          "photos": [
+            {
+              "id": "nature-4-1",
+              "url": "/images/gallery/nature/nature_4_1.jpg",
+              "title": "Morning Sunrise",
+              "description": "The first light of day breaking over the horizon"
+            },
+            {
+              "id": "nature-4-2",
+              "url": "/images/gallery/nature/nature_4_2.jpg",
+              "title": "Golden Hour",
+              "description": "The magical golden hour light"
+            },
+            {
+              "id": "nature-4-3",
+              "url": "/images/gallery/nature/nature_4_3.jpg",
+              "title": "Evening Sunset",
+              "description": "The sun setting behind the mountains"
+            },
+            {
+              "id": "nature-4-4",
+              "url": "/images/gallery/nature/nature_4_4.jpg",
+              "title": "Twilight",
+              "description": "The peaceful twilight hours"
+            }
+          ]
         },
         {
           "id": "nature-5",
           "title": "Waterfall Wonders",
           "description": "Recording the magnificence and power of waterfalls",
           "coverImage": "/images/gallery/nature/nature_5.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-11"
+          "photoCount": 4,
+          "createdAt": "2024-03-11",
+          "photos": [
+            {
+              "id": "nature-5-1",
+              "url": "/images/gallery/nature/nature_5_1.jpg",
+              "title": "Mighty Falls",
+              "description": "A powerful waterfall cascading down"
+            },
+            {
+              "id": "nature-5-2",
+              "url": "/images/gallery/nature/nature_5_2.jpg",
+              "title": "Hidden Falls",
+              "description": "A hidden waterfall in the forest"
+            },
+            {
+              "id": "nature-5-3",
+              "url": "/images/gallery/nature/nature_5_3.jpg",
+              "title": "Rainbow Falls",
+              "description": "A waterfall creating a rainbow"
+            },
+            {
+              "id": "nature-5-4",
+              "url": "/images/gallery/nature/nature_5_4.jpg",
+              "title": "Misty Falls",
+              "description": "A misty waterfall in the morning"
+            }
+          ]
         },
         {
           "id": "nature-6",
           "title": "Lake Reflections",
           "description": "Capturing the tranquility and beauty of lake surfaces",
           "coverImage": "/images/gallery/nature/nature_6.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-10"
+          "photoCount": 4,
+          "createdAt": "2024-03-10",
+          "photos": [
+            {
+              "id": "nature-6-1",
+              "url": "/images/gallery/nature/nature_6_1.jpg",
+              "title": "Mirror Lake",
+              "description": "Perfect reflections on a still lake"
+            },
+            {
+              "id": "nature-6-2",
+              "url": "/images/gallery/nature/nature_6_2.jpg",
+              "title": "Mountain Lake",
+              "description": "A lake surrounded by mountains"
+            },
+            {
+              "id": "nature-6-3",
+              "url": "/images/gallery/nature/nature_6_3.jpg",
+              "title": "Lake Sunset",
+              "description": "Sunset colors reflecting on the lake"
+            },
+            {
+              "id": "nature-6-4",
+              "url": "/images/gallery/nature/nature_6_4.jpg",
+              "title": "Morning Mist",
+              "description": "Morning mist rising from the lake"
+            }
+          ]
         },
         {
           "id": "nature-7",
           "title": "Grassland Scenery",
           "description": "Showcasing the vastness and vitality of grasslands",
           "coverImage": "/images/gallery/nature/nature_7.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-09"
+          "photoCount": 4,
+          "createdAt": "2024-03-09",
+          "photos": [
+            {
+              "id": "nature-7-1",
+              "url": "/images/gallery/nature/nature_7_1.jpg",
+              "title": "Golden Grass",
+              "description": "Golden grass swaying in the wind"
+            },
+            {
+              "id": "nature-7-2",
+              "url": "/images/gallery/nature/nature_7_2.jpg",
+              "title": "Wildflowers",
+              "description": "Colorful wildflowers in the grassland"
+            },
+            {
+              "id": "nature-7-3",
+              "url": "/images/gallery/nature/nature_7_3.jpg",
+              "title": "Grassland Sunset",
+              "description": "Sunset over the vast grassland"
+            },
+            {
+              "id": "nature-7-4",
+              "url": "/images/gallery/nature/nature_7_4.jpg",
+              "title": "Wildlife",
+              "description": "Wildlife in their natural habitat"
+            }
+          ]
         },
         {
           "id": "nature-8",
           "title": "Desert Wonders",
           "description": "Exploring the mystery and grandeur of deserts",
           "coverImage": "/images/gallery/nature/nature_8.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-08"
+          "photoCount": 4,
+          "createdAt": "2024-03-08",
+          "photos": [
+            {
+              "id": "nature-8-1",
+              "url": "/images/gallery/nature/nature_8_1.jpg",
+              "title": "Sand Dunes",
+              "description": "Majestic sand dunes in the desert"
+            },
+            {
+              "id": "nature-8-2",
+              "url": "/images/gallery/nature/nature_8_2.jpg",
+              "title": "Desert Sunset",
+              "description": "Beautiful sunset over the desert"
+            },
+            {
+              "id": "nature-8-3",
+              "url": "/images/gallery/nature/nature_8_3.jpg",
+              "title": "Oasis",
+              "description": "A peaceful oasis in the desert"
+            },
+            {
+              "id": "nature-8-4",
+              "url": "/images/gallery/nature/nature_8_4.jpg",
+              "title": "Desert Wildlife",
+              "description": "Wildlife adapted to desert life"
+            }
+          ]
         },
         {
           "id": "nature-9",
           "title": "Glacier World",
           "description": "Recording the purity and magnificence of glaciers",
           "coverImage": "/images/gallery/nature/nature_9.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-07"
+          "photoCount": 4,
+          "createdAt": "2024-03-07",
+          "photos": [
+            {
+              "id": "nature-9-1",
+              "url": "/images/gallery/nature/nature_9_1.jpg",
+              "title": "Ice Caves",
+              "description": "Mysterious ice caves in the glacier"
+            },
+            {
+              "id": "nature-9-2",
+              "url": "/images/gallery/nature/nature_9_2.jpg",
+              "title": "Glacier Lake",
+              "description": "A lake formed by glacier melt"
+            },
+            {
+              "id": "nature-9-3",
+              "url": "/images/gallery/nature/nature_9_3.jpg",
+              "title": "Ice Formations",
+              "description": "Unique ice formations in the glacier"
+            },
+            {
+              "id": "nature-9-4",
+              "url": "/images/gallery/nature/nature_9_4.jpg",
+              "title": "Glacier Peaks",
+              "description": "Majestic peaks covered in ice"
+            }
+          ]
         },
         {
           "id": "nature-10",
           "title": "Canyon Wonders",
           "description": "Showcasing the depth and grandeur of canyons",
           "coverImage": "/images/gallery/nature/nature_10.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-06"
+          "photoCount": 4,
+          "createdAt": "2024-03-06",
+          "photos": [
+            {
+              "id": "nature-10-1",
+              "url": "/images/gallery/nature/nature_10_1.jpg",
+              "title": "Grand Canyon",
+              "description": "The magnificent Grand Canyon"
+            },
+            {
+              "id": "nature-10-2",
+              "url": "/images/gallery/nature/nature_10_2.jpg",
+              "title": "Canyon River",
+              "description": "A river flowing through the canyon"
+            },
+            {
+              "id": "nature-10-3",
+              "url": "/images/gallery/nature/nature_10_3.jpg",
+              "title": "Canyon Walls",
+              "description": "Colorful layers of canyon walls"
+            },
+            {
+              "id": "nature-10-4",
+              "url": "/images/gallery/nature/nature_10_4.jpg",
+              "title": "Canyon Sunset",
+              "description": "Sunset casting shadows in the canyon"
+            }
+          ]
         },
         {
           "id": "nature-11",
           "title": "Rainforest Exploration",
           "description": "Exploring the mystery and vitality of rainforests",
           "coverImage": "/images/gallery/nature/nature_11.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-05"
+          "photoCount": 4,
+          "createdAt": "2024-03-05",
+          "photos": [
+            {
+              "id": "nature-11-1",
+              "url": "/images/gallery/nature/nature_11_1.jpg",
+              "title": "Dense Canopy",
+              "description": "The dense canopy of the rainforest"
+            },
+            {
+              "id": "nature-11-2",
+              "url": "/images/gallery/nature/nature_11_2.jpg",
+              "title": "Exotic Plants",
+              "description": "Unique plants found in the rainforest"
+            },
+            {
+              "id": "nature-11-3",
+              "url": "/images/gallery/nature/nature_11_3.jpg",
+              "title": "Waterfall",
+              "description": "A waterfall in the rainforest"
+            },
+            {
+              "id": "nature-11-4",
+              "url": "/images/gallery/nature/nature_11_4.jpg",
+              "title": "Wildlife",
+              "description": "Diverse wildlife in the rainforest"
+            }
+          ]
         },
         {
           "id": "nature-12",
           "title": "Polar Scenery",
           "description": "Recording the purity and grandeur of polar regions",
           "coverImage": "/images/gallery/nature/nature_12.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-04"
+          "photoCount": 4,
+          "createdAt": "2024-03-04",
+          "photos": [
+            {
+              "id": "nature-12-1",
+              "url": "/images/gallery/nature/nature_12_1.jpg",
+              "title": "Icebergs",
+              "description": "Majestic icebergs in polar waters"
+            },
+            {
+              "id": "nature-12-2",
+              "url": "/images/gallery/nature/nature_12_2.jpg",
+              "title": "Northern Lights",
+              "description": "The magical aurora borealis"
+            },
+            {
+              "id": "nature-12-3",
+              "url": "/images/gallery/nature/nature_12_3.jpg",
+              "title": "Polar Wildlife",
+              "description": "Wildlife adapted to polar conditions"
+            },
+            {
+              "id": "nature-12-4",
+              "url": "/images/gallery/nature/nature_12_4.jpg",
+              "title": "Ice Fields",
+              "description": "Vast ice fields in the polar region"
+            }
+          ]
         }
       ]
     },
@@ -111,96 +423,408 @@
           "title": "City Night Views",
           "description": "Recording the brilliant night views of cities",
           "coverImage": "/images/gallery/urban/urban_1.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-15"
+          "photoCount": 4,
+          "createdAt": "2024-03-15",
+          "photos": [
+            {
+              "id": "urban-1-1",
+              "url": "/images/gallery/urban/urban_1_1.jpg",
+              "title": "City Lights",
+              "description": "The city illuminated by night lights"
+            },
+            {
+              "id": "urban-1-2",
+              "url": "/images/gallery/urban/urban_1_2.jpg",
+              "title": "Night Skyline",
+              "description": "The city skyline against the night sky"
+            },
+            {
+              "id": "urban-1-3",
+              "url": "/images/gallery/urban/urban_1_3.jpg",
+              "title": "Neon Signs",
+              "description": "Vibrant neon signs in the city"
+            },
+            {
+              "id": "urban-1-4",
+              "url": "/images/gallery/urban/urban_1_4.jpg",
+              "title": "Night Streets",
+              "description": "Busy streets at night"
+            }
+          ]
         },
         {
           "id": "urban-2",
           "title": "Street Life",
           "description": "Capturing the wonderful moments of urban life",
           "coverImage": "/images/gallery/urban/urban_2.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-14"
+          "photoCount": 4,
+          "createdAt": "2024-03-14",
+          "photos": [
+            {
+              "id": "urban-2-1",
+              "url": "/images/gallery/urban/urban_2_1.jpg",
+              "title": "Street Market",
+              "description": "A bustling street market"
+            },
+            {
+              "id": "urban-2-2",
+              "url": "/images/gallery/urban/urban_2_2.jpg",
+              "title": "Cafe Scene",
+              "description": "People enjoying coffee at a street cafe"
+            },
+            {
+              "id": "urban-2-3",
+              "url": "/images/gallery/urban/urban_2_3.jpg",
+              "title": "Street Performers",
+              "description": "Street performers entertaining the crowd"
+            },
+            {
+              "id": "urban-2-4",
+              "url": "/images/gallery/urban/urban_2_4.jpg",
+              "title": "City Walkers",
+              "description": "People walking through the city streets"
+            }
+          ]
         },
         {
           "id": "urban-3",
           "title": "Architectural Art",
           "description": "Showcasing the unique charm of modern architecture",
           "coverImage": "/images/gallery/urban/urban_3.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-13"
+          "photoCount": 4,
+          "createdAt": "2024-03-13",
+          "photos": [
+            {
+              "id": "urban-3-1",
+              "url": "/images/gallery/urban/urban_3_1.jpg",
+              "title": "Modern Building",
+              "description": "A stunning modern architectural design"
+            },
+            {
+              "id": "urban-3-2",
+              "url": "/images/gallery/urban/urban_3_2.jpg",
+              "title": "Glass Facade",
+              "description": "Reflective glass facade of a building"
+            },
+            {
+              "id": "urban-3-3",
+              "url": "/images/gallery/urban/urban_3_3.jpg",
+              "title": "Architectural Detail",
+              "description": "Intricate architectural details"
+            },
+            {
+              "id": "urban-3-4",
+              "url": "/images/gallery/urban/urban_3_4.jpg",
+              "title": "Building Interior",
+              "description": "The interior of a modern building"
+            }
+          ]
         },
         {
           "id": "urban-4",
           "title": "City Parks",
           "description": "Recording the green spaces in cities",
           "coverImage": "/images/gallery/urban/urban_4.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-12"
+          "photoCount": 4,
+          "createdAt": "2024-03-12",
+          "photos": [
+            {
+              "id": "urban-4-1",
+              "url": "/images/gallery/urban/urban_4_1.jpg",
+              "title": "Central Park",
+              "description": "A peaceful central park in the city"
+            },
+            {
+              "id": "urban-4-2",
+              "url": "/images/gallery/urban/urban_4_2.jpg",
+              "title": "Garden Path",
+              "description": "A beautiful path through the park"
+            },
+            {
+              "id": "urban-4-3",
+              "url": "/images/gallery/urban/urban_4_3.jpg",
+              "title": "Park Lake",
+              "description": "A serene lake in the city park"
+            },
+            {
+              "id": "urban-4-4",
+              "url": "/images/gallery/urban/urban_4_4.jpg",
+              "title": "Park Activities",
+              "description": "People enjoying park activities"
+            }
+          ]
         },
         {
           "id": "urban-5",
           "title": "Commercial Districts",
           "description": "Showcasing the prosperity and vitality of cities",
           "coverImage": "/images/gallery/urban/urban_5.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-11"
+          "photoCount": 4,
+          "createdAt": "2024-03-11",
+          "photos": [
+            {
+              "id": "urban-5-1",
+              "url": "/images/gallery/urban/urban_5_1.jpg",
+              "title": "Shopping Street",
+              "description": "A vibrant shopping district"
+            },
+            {
+              "id": "urban-5-2",
+              "url": "/images/gallery/urban/urban_5_2.jpg",
+              "title": "Business Center",
+              "description": "The heart of the business district"
+            },
+            {
+              "id": "urban-5-3",
+              "url": "/images/gallery/urban/urban_5_3.jpg",
+              "title": "Restaurant Row",
+              "description": "A street lined with restaurants"
+            },
+            {
+              "id": "urban-5-4",
+              "url": "/images/gallery/urban/urban_5_4.jpg",
+              "title": "Entertainment Zone",
+              "description": "The city's entertainment district"
+            }
+          ]
         },
         {
           "id": "urban-6",
           "title": "City Squares",
           "description": "Recording the vitality of urban public spaces",
           "coverImage": "/images/gallery/urban/urban_6.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-10"
+          "photoCount": 4,
+          "createdAt": "2024-03-10",
+          "photos": [
+            {
+              "id": "urban-6-1",
+              "url": "/images/gallery/urban/urban_6_1.jpg",
+              "title": "Main Square",
+              "description": "The city's main square"
+            },
+            {
+              "id": "urban-6-2",
+              "url": "/images/gallery/urban/urban_6_2.jpg",
+              "title": "Fountain",
+              "description": "A beautiful fountain in the square"
+            },
+            {
+              "id": "urban-6-3",
+              "url": "/images/gallery/urban/urban_6_3.jpg",
+              "title": "Public Art",
+              "description": "Public art installations in the square"
+            },
+            {
+              "id": "urban-6-4",
+              "url": "/images/gallery/urban/urban_6_4.jpg",
+              "title": "Square Events",
+              "description": "Events taking place in the square"
+            }
+          ]
         },
         {
           "id": "urban-7",
           "title": "Urban Transportation",
           "description": "Showcasing the busy scenes of urban transportation",
           "coverImage": "/images/gallery/urban/urban_7.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-09"
+          "photoCount": 4,
+          "createdAt": "2024-03-09",
+          "photos": [
+            {
+              "id": "urban-7-1",
+              "url": "/images/gallery/urban/urban_7_1.jpg",
+              "title": "Subway Station",
+              "description": "A busy subway station"
+            },
+            {
+              "id": "urban-7-2",
+              "url": "/images/gallery/urban/urban_7_2.jpg",
+              "title": "Bus Terminal",
+              "description": "The city's main bus terminal"
+            },
+            {
+              "id": "urban-7-3",
+              "url": "/images/gallery/urban/urban_7_3.jpg",
+              "title": "Traffic Flow",
+              "description": "The flow of traffic in the city"
+            },
+            {
+              "id": "urban-7-4",
+              "url": "/images/gallery/urban/urban_7_4.jpg",
+              "title": "Bicycle Lane",
+              "description": "A dedicated bicycle lane"
+            }
+          ]
         },
         {
           "id": "urban-8",
           "title": "City Skylines",
           "description": "Recording the beautiful city skylines",
           "coverImage": "/images/gallery/urban/urban_8.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-08"
+          "photoCount": 4,
+          "createdAt": "2024-03-08",
+          "photos": [
+            {
+              "id": "urban-8-1",
+              "url": "/images/gallery/urban/urban_8_1.jpg",
+              "title": "Day Skyline",
+              "description": "The city skyline during the day"
+            },
+            {
+              "id": "urban-8-2",
+              "url": "/images/gallery/urban/urban_8_2.jpg",
+              "title": "Night Skyline",
+              "description": "The city skyline at night"
+            },
+            {
+              "id": "urban-8-3",
+              "url": "/images/gallery/urban/urban_8_3.jpg",
+              "title": "Sunset View",
+              "description": "The skyline during sunset"
+            },
+            {
+              "id": "urban-8-4",
+              "url": "/images/gallery/urban/urban_8_4.jpg",
+              "title": "Aerial View",
+              "description": "An aerial view of the city"
+            }
+          ]
         },
         {
           "id": "urban-9",
           "title": "Urban Culture",
           "description": "Showcasing the cultural characteristics of cities",
           "coverImage": "/images/gallery/urban/urban_9.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-07"
+          "photoCount": 4,
+          "createdAt": "2024-03-07",
+          "photos": [
+            {
+              "id": "urban-9-1",
+              "url": "/images/gallery/urban/urban_9_1.jpg",
+              "title": "Art Gallery",
+              "description": "A contemporary art gallery"
+            },
+            {
+              "id": "urban-9-2",
+              "url": "/images/gallery/urban/urban_9_2.jpg",
+              "title": "Museum",
+              "description": "A city museum"
+            },
+            {
+              "id": "urban-9-3",
+              "url": "/images/gallery/urban/urban_9_3.jpg",
+              "title": "Theater",
+              "description": "A historic theater"
+            },
+            {
+              "id": "urban-9-4",
+              "url": "/images/gallery/urban/urban_9_4.jpg",
+              "title": "Cultural Center",
+              "description": "A modern cultural center"
+            }
+          ]
         },
         {
           "id": "urban-10",
           "title": "City Life",
           "description": "Recording the daily life of urban residents",
           "coverImage": "/images/gallery/urban/urban_10.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-06"
+          "photoCount": 4,
+          "createdAt": "2024-03-06",
+          "photos": [
+            {
+              "id": "urban-10-1",
+              "url": "/images/gallery/urban/urban_10_1.jpg",
+              "title": "Morning Rush",
+              "description": "The morning rush hour"
+            },
+            {
+              "id": "urban-10-2",
+              "url": "/images/gallery/urban/urban_10_2.jpg",
+              "title": "Lunch Break",
+              "description": "People on their lunch break"
+            },
+            {
+              "id": "urban-10-3",
+              "url": "/images/gallery/urban/urban_10_3.jpg",
+              "title": "Evening Stroll",
+              "description": "An evening stroll in the city"
+            },
+            {
+              "id": "urban-10-4",
+              "url": "/images/gallery/urban/urban_10_4.jpg",
+              "title": "Night Life",
+              "description": "The city's night life"
+            }
+          ]
         },
         {
           "id": "urban-11",
           "title": "Urban Changes",
           "description": "Showcasing the development and changes of cities",
           "coverImage": "/images/gallery/urban/urban_11.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-05"
+          "photoCount": 4,
+          "createdAt": "2024-03-05",
+          "photos": [
+            {
+              "id": "urban-11-1",
+              "url": "/images/gallery/urban/urban_11_1.jpg",
+              "title": "Construction",
+              "description": "New construction in the city"
+            },
+            {
+              "id": "urban-11-2",
+              "url": "/images/gallery/urban/urban_11_2.jpg",
+              "title": "Renovation",
+              "description": "Historic building renovation"
+            },
+            {
+              "id": "urban-11-3",
+              "url": "/images/gallery/urban/urban_11_3.jpg",
+              "title": "Urban Planning",
+              "description": "New urban development"
+            },
+            {
+              "id": "urban-11-4",
+              "url": "/images/gallery/urban/urban_11_4.jpg",
+              "title": "Modernization",
+              "description": "City modernization projects"
+            }
+          ]
         },
         {
           "id": "urban-12",
           "title": "Urban Memory",
           "description": "Recording the history and memory of cities",
           "coverImage": "/images/gallery/urban/urban_12.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-04"
+          "photoCount": 4,
+          "createdAt": "2024-03-04",
+          "photos": [
+            {
+              "id": "urban-12-1",
+              "url": "/images/gallery/urban/urban_12_1.jpg",
+              "title": "Historic District",
+              "description": "The city's historic district"
+            },
+            {
+              "id": "urban-12-2",
+              "url": "/images/gallery/urban/urban_12_2.jpg",
+              "title": "Old Buildings",
+              "description": "Preserved historic buildings"
+            },
+            {
+              "id": "urban-12-3",
+              "url": "/images/gallery/urban/urban_12_3.jpg",
+              "title": "Heritage Site",
+              "description": "A UNESCO heritage site"
+            },
+            {
+              "id": "urban-12-4",
+              "url": "/images/gallery/urban/urban_12_4.jpg",
+              "title": "City Museum",
+              "description": "A museum preserving city history"
+            }
+          ]
         }
       ]
     },
@@ -213,96 +837,408 @@
           "title": "Asian Journey",
           "description": "Exploring the unique charm of Asia",
           "coverImage": "/images/gallery/travel/travel_1.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-15"
+          "photoCount": 4,
+          "createdAt": "2024-03-15",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "travel-2",
           "title": "European Style",
           "description": "Experiencing the history and culture of Europe",
           "coverImage": "/images/gallery/travel/travel_2.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-14"
+          "photoCount": 4,
+          "createdAt": "2024-03-14",
+          "photos": [
+            {
+              "id": "travel-2-1",
+              "url": "/images/gallery/travel/travel_2_1.jpg",
+              "title": "Historic Castle",
+              "description": "Ancient European castle"
+            },
+            {
+              "id": "travel-2-2",
+              "url": "/images/gallery/travel/travel_2_2.jpg",
+              "title": "City Square",
+              "description": "Historic city square"
+            },
+            {
+              "id": "travel-2-3",
+              "url": "/images/gallery/travel/travel_2_3.jpg",
+              "title": "Art Museum",
+              "description": "Famous European art museum"
+            },
+            {
+              "id": "travel-2-4",
+              "url": "/images/gallery/travel/travel_2_4.jpg",
+              "title": "Cafe Culture",
+              "description": "Traditional European cafe"
+            }
+          ]
         },
         {
           "id": "travel-3",
           "title": "American Adventure",
           "description": "Exploring the natural wonders of America",
           "coverImage": "/images/gallery/travel/travel_3.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-13"
+          "photoCount": 4,
+          "createdAt": "2024-03-13",
+          "photos": [
+            {
+              "id": "travel-3-1",
+              "url": "/images/gallery/travel/travel_3_1.jpg",
+              "title": "National Park",
+              "description": "A stunning national park"
+            },
+            {
+              "id": "travel-3-2",
+              "url": "/images/gallery/travel/travel_3_2.jpg",
+              "title": "City Skyline",
+              "description": "Iconic American city skyline"
+            },
+            {
+              "id": "travel-3-3",
+              "url": "/images/gallery/travel/travel_3_3.jpg",
+              "title": "Road Trip",
+              "description": "Scenic road trip view"
+            },
+            {
+              "id": "travel-3-4",
+              "url": "/images/gallery/travel/travel_3_4.jpg",
+              "title": "Local Culture",
+              "description": "American local culture"
+            }
+          ]
         },
         {
           "id": "travel-4",
           "title": "African Journey",
           "description": "Experiencing the primitive charm of Africa",
           "coverImage": "/images/gallery/travel/travel_4.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-12"
+          "photoCount": 4,
+          "createdAt": "2024-03-12",
+          "photos": [
+            {
+              "id": "travel-4-1",
+              "url": "/images/gallery/travel/travel_4_1.jpg",
+              "title": "Safari",
+              "description": "Wildlife safari experience"
+            },
+            {
+              "id": "travel-4-2",
+              "url": "/images/gallery/travel/travel_4_2.jpg",
+              "title": "Desert",
+              "description": "Vast African desert"
+            },
+            {
+              "id": "travel-4-3",
+              "url": "/images/gallery/travel/travel_4_3.jpg",
+              "title": "Tribal Culture",
+              "description": "Traditional tribal culture"
+            },
+            {
+              "id": "travel-4-4",
+              "url": "/images/gallery/travel/travel_4_4.jpg",
+              "title": "African Sunset",
+              "description": "Beautiful African sunset"
+            }
+          ]
         },
         {
           "id": "travel-5",
           "title": "Oceania Scenery",
           "description": "Experiencing the natural beauty of Oceania",
           "coverImage": "/images/gallery/travel/travel_5.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-11"
+          "photoCount": 4,
+          "createdAt": "2024-03-11",
+          "photos": [
+            {
+              "id": "travel-5-1",
+              "url": "/images/gallery/travel/travel_5_1.jpg",
+              "title": "Beach Paradise",
+              "description": "Beautiful beach in Oceania"
+            },
+            {
+              "id": "travel-5-2",
+              "url": "/images/gallery/travel/travel_5_2.jpg",
+              "title": "Coral Reef",
+              "description": "Colorful coral reef"
+            },
+            {
+              "id": "travel-5-3",
+              "url": "/images/gallery/travel/travel_5_3.jpg",
+              "title": "Island Life",
+              "description": "Peaceful island life"
+            },
+            {
+              "id": "travel-5-4",
+              "url": "/images/gallery/travel/travel_5_4.jpg",
+              "title": "Ocean View",
+              "description": "Stunning ocean view"
+            }
+          ]
         },
         {
           "id": "travel-6",
-          "title": "Polar Adventure",
-          "description": "Exploring the mysterious world of polar regions",
+          "title": "South American Adventure",
+          "description": "Exploring the diverse landscapes of South America",
           "coverImage": "/images/gallery/travel/travel_6.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-10"
+          "photoCount": 4,
+          "createdAt": "2024-03-10",
+          "photos": [
+            {
+              "id": "travel-6-1",
+              "url": "/images/gallery/travel/travel_6_1.jpg",
+              "title": "Rainforest",
+              "description": "Amazon rainforest"
+            },
+            {
+              "id": "travel-6-2",
+              "url": "/images/gallery/travel/travel_6_2.jpg",
+              "title": "Ancient Ruins",
+              "description": "Historic ruins"
+            },
+            {
+              "id": "travel-6-3",
+              "url": "/images/gallery/travel/travel_6_3.jpg",
+              "title": "Mountain Range",
+              "description": "Andes mountain range"
+            },
+            {
+              "id": "travel-6-4",
+              "url": "/images/gallery/travel/travel_6_4.jpg",
+              "title": "Local Market",
+              "description": "Vibrant local market"
+            }
+          ]
         },
         {
           "id": "travel-7",
-          "title": "Island Vacation",
-          "description": "Enjoying the leisurely time on islands",
+          "title": "Middle East Discovery",
+          "description": "Exploring the rich culture of the Middle East",
           "coverImage": "/images/gallery/travel/travel_7.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-09"
+          "photoCount": 4,
+          "createdAt": "2024-03-09",
+          "photos": [
+            {
+              "id": "travel-7-1",
+              "url": "/images/gallery/travel/travel_7_1.jpg",
+              "title": "Ancient City",
+              "description": "Historic Middle Eastern city"
+            },
+            {
+              "id": "travel-7-2",
+              "url": "/images/gallery/travel/travel_7_2.jpg",
+              "title": "Desert Oasis",
+              "description": "Beautiful desert oasis"
+            },
+            {
+              "id": "travel-7-3",
+              "url": "/images/gallery/travel/travel_7_3.jpg",
+              "title": "Local Bazaar",
+              "description": "Traditional bazaar"
+            },
+            {
+              "id": "travel-7-4",
+              "url": "/images/gallery/travel/travel_7_4.jpg",
+              "title": "Cultural Heritage",
+              "description": "Rich cultural heritage"
+            }
+          ]
         },
         {
           "id": "travel-8",
-          "title": "Ancient City Exploration",
-          "description": "Exploring the historical relics of ancient cities",
+          "title": "Arctic Expedition",
+          "description": "Experiencing the unique beauty of the Arctic",
           "coverImage": "/images/gallery/travel/travel_8.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-08"
+          "photoCount": 4,
+          "createdAt": "2024-03-08",
+          "photos": [
+            {
+              "id": "travel-8-1",
+              "url": "/images/gallery/travel/travel_8_1.jpg",
+              "title": "Icebergs",
+              "description": "Majestic icebergs"
+            },
+            {
+              "id": "travel-8-2",
+              "url": "/images/gallery/travel/travel_8_2.jpg",
+              "title": "Northern Lights",
+              "description": "Aurora borealis"
+            },
+            {
+              "id": "travel-8-3",
+              "url": "/images/gallery/travel/travel_8_3.jpg",
+              "title": "Arctic Wildlife",
+              "description": "Unique Arctic wildlife"
+            },
+            {
+              "id": "travel-8-4",
+              "url": "/images/gallery/travel/travel_8_4.jpg",
+              "title": "Ice Caves",
+              "description": "Beautiful ice caves"
+            }
+          ]
         },
         {
           "id": "travel-9",
-          "title": "Food Journey",
-          "description": "Tasting cuisines from around the world",
+          "title": "Caribbean Paradise",
+          "description": "Enjoying the tropical beauty of the Caribbean",
           "coverImage": "/images/gallery/travel/travel_9.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-07"
+          "photoCount": 4,
+          "createdAt": "2024-03-07",
+          "photos": [
+            {
+              "id": "travel-9-1",
+              "url": "/images/gallery/travel/travel_9_1.jpg",
+              "title": "Tropical Beach",
+              "description": "Beautiful tropical beach"
+            },
+            {
+              "id": "travel-9-2",
+              "url": "/images/gallery/travel/travel_9_2.jpg",
+              "title": "Island Resort",
+              "description": "Luxury island resort"
+            },
+            {
+              "id": "travel-9-3",
+              "url": "/images/gallery/travel/travel_9_3.jpg",
+              "title": "Crystal Waters",
+              "description": "Clear Caribbean waters"
+            },
+            {
+              "id": "travel-9-4",
+              "url": "/images/gallery/travel/travel_9_4.jpg",
+              "title": "Local Culture",
+              "description": "Vibrant local culture"
+            }
+          ]
         },
         {
           "id": "travel-10",
-          "title": "Cultural Experience",
-          "description": "Experiencing the charm of different cultures",
+          "title": "Mediterranean Journey",
+          "description": "Exploring the beauty of Mediterranean countries",
           "coverImage": "/images/gallery/travel/travel_10.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-06"
+          "photoCount": 4,
+          "createdAt": "2024-03-06",
+          "photos": [
+            {
+              "id": "travel-10-1",
+              "url": "/images/gallery/travel/travel_10_1.jpg",
+              "title": "Coastal Town",
+              "description": "Charming coastal town"
+            },
+            {
+              "id": "travel-10-2",
+              "url": "/images/gallery/travel/travel_10_2.jpg",
+              "title": "Historic Port",
+              "description": "Ancient Mediterranean port"
+            },
+            {
+              "id": "travel-10-3",
+              "url": "/images/gallery/travel/travel_10_3.jpg",
+              "title": "Local Cuisine",
+              "description": "Traditional Mediterranean food"
+            },
+            {
+              "id": "travel-10-4",
+              "url": "/images/gallery/travel/travel_10_4.jpg",
+              "title": "Island View",
+              "description": "Beautiful island view"
+            }
+          ]
         },
         {
           "id": "travel-11",
-          "title": "Nature Exploration",
-          "description": "Exploring the wonders of nature",
+          "title": "Himalayan Adventure",
+          "description": "Experiencing the majesty of the Himalayas",
           "coverImage": "/images/gallery/travel/travel_11.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-05"
+          "photoCount": 4,
+          "createdAt": "2024-03-05",
+          "photos": [
+            {
+              "id": "travel-11-1",
+              "url": "/images/gallery/travel/travel_11_1.jpg",
+              "title": "Mountain Peaks",
+              "description": "Majestic Himalayan peaks"
+            },
+            {
+              "id": "travel-11-2",
+              "url": "/images/gallery/travel/travel_11_2.jpg",
+              "title": "Monastery",
+              "description": "Ancient mountain monastery"
+            },
+            {
+              "id": "travel-11-3",
+              "url": "/images/gallery/travel/travel_11_3.jpg",
+              "title": "Mountain Village",
+              "description": "Traditional mountain village"
+            },
+            {
+              "id": "travel-11-4",
+              "url": "/images/gallery/travel/travel_11_4.jpg",
+              "title": "Mountain Trail",
+              "description": "Scenic mountain trail"
+            }
+          ]
         },
         {
           "id": "travel-12",
-          "title": "City Walks",
-          "description": "Walking through cities around the world",
+          "title": "Pacific Islands",
+          "description": "Discovering the beauty of Pacific islands",
           "coverImage": "/images/gallery/travel/travel_12.jpg",
-          "photoCount": 20,
-          "createdAt": "2024-03-04"
+          "photoCount": 4,
+          "createdAt": "2024-03-04",
+          "photos": [
+            {
+              "id": "travel-12-1",
+              "url": "/images/gallery/travel/travel_12_1.jpg",
+              "title": "Island Beach",
+              "description": "Pristine island beach"
+            },
+            {
+              "id": "travel-12-2",
+              "url": "/images/gallery/travel/travel_12_2.jpg",
+              "title": "Volcanic Island",
+              "description": "Dramatic volcanic landscape"
+            },
+            {
+              "id": "travel-12-3",
+              "url": "/images/gallery/travel/travel_12_3.jpg",
+              "title": "Local Culture",
+              "description": "Rich island culture"
+            },
+            {
+              "id": "travel-12-4",
+              "url": "/images/gallery/travel/travel_12_4.jpg",
+              "title": "Ocean Life",
+              "description": "Diverse ocean life"
+            }
+          ]
         }
       ]
     },
@@ -316,7 +1252,33 @@
           "description": "Showcasing the innovative design of modern architecture",
           "coverImage": "/images/gallery/architecture/architecture_1.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-15"
+          "createdAt": "2024-03-15",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-2",
@@ -324,7 +1286,33 @@
           "description": "Recording the eternal charm of classical architecture",
           "coverImage": "/images/gallery/architecture/architecture_2.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-14"
+          "createdAt": "2024-03-14",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-3",
@@ -332,7 +1320,33 @@
           "description": "Showcasing the sacredness and solemnity of religious architecture",
           "coverImage": "/images/gallery/architecture/architecture_3.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-13"
+          "createdAt": "2024-03-13",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-4",
@@ -340,7 +1354,33 @@
           "description": "Recording the grandeur and luxury of palace architecture",
           "coverImage": "/images/gallery/architecture/architecture_4.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-12"
+          "createdAt": "2024-03-12",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-5",
@@ -348,7 +1388,33 @@
           "description": "Showcasing the delicacy and elegance of garden architecture",
           "coverImage": "/images/gallery/architecture/architecture_5.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-11"
+          "createdAt": "2024-03-11",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-6",
@@ -356,7 +1422,33 @@
           "description": "Recording the characteristics of traditional residences",
           "coverImage": "/images/gallery/architecture/architecture_6.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-10"
+          "createdAt": "2024-03-10",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-7",
@@ -364,7 +1456,33 @@
           "description": "Showcasing the modern feel of commercial architecture",
           "coverImage": "/images/gallery/architecture/architecture_7.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-09"
+          "createdAt": "2024-03-09",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-8",
@@ -372,7 +1490,33 @@
           "description": "Recording the unique charm of cultural architecture",
           "coverImage": "/images/gallery/architecture/architecture_8.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-08"
+          "createdAt": "2024-03-08",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-9",
@@ -380,7 +1524,33 @@
           "description": "Showcasing the practical aesthetics of industrial architecture",
           "coverImage": "/images/gallery/architecture/architecture_9.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-07"
+          "createdAt": "2024-03-07",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-10",
@@ -388,7 +1558,33 @@
           "description": "Recording the engineering beauty of bridge architecture",
           "coverImage": "/images/gallery/architecture/architecture_10.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-06"
+          "createdAt": "2024-03-06",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-11",
@@ -396,7 +1592,33 @@
           "description": "Showcasing the natural integration of landscape architecture",
           "coverImage": "/images/gallery/architecture/architecture_11.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-05"
+          "createdAt": "2024-03-05",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         },
         {
           "id": "architecture-12",
@@ -404,117 +1626,35 @@
           "description": "Exploring future trends in architectural design",
           "coverImage": "/images/gallery/architecture/architecture_12.jpg",
           "photoCount": 20,
-          "createdAt": "2024-03-04"
+          "createdAt": "2024-03-04",
+          "photos": [
+            {
+              "id": "travel-1-1",
+              "url": "/images/gallery/travel/travel_1_1.jpg",
+              "title": "Temple Visit",
+              "description": "Ancient temple in Asia"
+            },
+            {
+              "id": "travel-1-2",
+              "url": "/images/gallery/travel/travel_1_2.jpg",
+              "title": "Street Food",
+              "description": "Local street food market"
+            },
+            {
+              "id": "travel-1-3",
+              "url": "/images/gallery/travel/travel_1_3.jpg",
+              "title": "Traditional Festival",
+              "description": "Colorful traditional festival celebration"
+            },
+            {
+              "id": "travel-1-4",
+              "url": "/images/gallery/travel/travel_1_4.jpg",
+              "title": "Scenic View",
+              "description": "Breathtaking view of Asian landscape"
+            }
+          ]
         }
       ]
     }
-  },
-  "albums": {
-    "nature": [
-      {
-        "id": "nature-1",
-        "title": "Mountain Majesty",
-        "description": "Breathtaking views of mountain landscapes",
-        "photoCount": 15,
-        "createdAt": "2024-03-15",
-        "coverImage": "/images/gallery/nature/nature_1.jpg"
-      },
-      {
-        "id": "nature-2",
-        "title": "Forest Serenity",
-        "description": "Peaceful moments in ancient forests",
-        "photoCount": 12,
-        "createdAt": "2024-03-10",
-        "coverImage": "/images/gallery/nature/nature_2.jpg"
-      }
-    ],
-    "urban": [
-      {
-        "id": "urban-1",
-        "title": "City Lights",
-        "description": "The vibrant energy of urban nightlife",
-        "photoCount": 18,
-        "createdAt": "2024-03-12",
-        "coverImage": "/images/gallery/urban/urban_1.jpg"
-      },
-      {
-        "id": "urban-2",
-        "title": "Street Life",
-        "description": "Capturing the essence of city streets",
-        "photoCount": 14,
-        "createdAt": "2024-03-08",
-        "coverImage": "/images/gallery/urban/urban_2.jpg"
-      }
-    ],
-    "travel": [
-      {
-        "id": "travel-1",
-        "title": "Cultural Journey",
-        "description": "Exploring diverse cultures around the world",
-        "photoCount": 20,
-        "createdAt": "2024-03-14",
-        "coverImage": "/images/gallery/travel/travel_1.jpg"
-      },
-      {
-        "id": "travel-2",
-        "title": "Hidden Gems",
-        "description": "Discovering lesser-known destinations",
-        "photoCount": 16,
-        "createdAt": "2024-03-09",
-        "coverImage": "/images/gallery/travel/travel_2.jpg"
-      }
-    ],
-    "architecture": [
-      {
-        "id": "architecture-1",
-        "title": "Modern Marvels",
-        "description": "Contemporary architectural wonders",
-        "photoCount": 17,
-        "createdAt": "2024-03-13",
-        "coverImage": "/images/gallery/architecture/architecture_1.jpg"
-      },
-      {
-        "id": "architecture-2",
-        "title": "Historical Heritage",
-        "description": "Preserving architectural history",
-        "photoCount": 13,
-        "createdAt": "2024-03-11",
-        "coverImage": "/images/gallery/architecture/architecture_2.jpg"
-      }
-    ]
-  },
-  "photos": {
-    "nature-1": [
-      {
-        "id": "nature-1-1",
-        "src": "/images/gallery/nature/nature_1.jpg",
-        "alt": "Mountain landscape 1",
-        "title": "Mountain Majesty 1",
-        "description": "A breathtaking view of mountain peaks"
-      },
-      {
-        "id": "nature-1-2",
-        "src": "/images/gallery/nature/nature_2.jpg",
-        "alt": "Mountain landscape 2",
-        "title": "Mountain Majesty 2",
-        "description": "Sunrise over mountain ranges"
-      }
-    ],
-    "urban-1": [
-      {
-        "id": "urban-1-1",
-        "src": "/images/gallery/urban/urban_1.jpg",
-        "alt": "City lights 1",
-        "title": "City Lights 1",
-        "description": "Night view of city skyline"
-      },
-      {
-        "id": "urban-1-2",
-        "src": "/images/gallery/urban/urban_2.jpg",
-        "alt": "City lights 2",
-        "title": "City Lights 2",
-        "description": "Urban nightlife scene"
-      }
-    ]
   }
 } 

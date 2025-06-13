@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getCategoryInfo, getAlbumsByCategory } from '@/app/utils/config'
+import { getCategoryInfo, getAlbumsByCategory, getAlbumById } from '@/app/utils/config'
 
 interface Props {
   params: {
@@ -12,11 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const info = getCategoryInfo(params.category) || { title: 'Gallery', description: 'Photo Gallery' }
   const albums = getAlbumsByCategory(params.category)
   const album = albums.find(a => a.id === params.albumId)
-  
-  return {
-    title: `${album?.title || 'Album'} - ${info.title}`,
-    description: album?.description || info.description,
-  }
+  return getAlbumById(params.category, params.albumId);
 }
 
 export default function AlbumLayout({

@@ -13,8 +13,9 @@ export function getAlbumsByCategory(category: string): Album[] {
   return config.categories[category]?.albums || []
 }
 
-export function getPhotosByAlbum(albumId: string): Photo[] {
-  return config.photos[albumId] || []
+export function getAlbumById(categoryId: string, albumId: string): Album | undefined {
+  let albums = config.categories[categoryId]?.albums.find(album => album.id === albumId);
+  return albums[0] && albums[0].photos || [];
 }
 
 export function getAllCategories(): string[] {

@@ -9,9 +9,8 @@ import ThreeColumnRow from '@/app/components/gallery/ThreeColumnRow'
 import MixedRow from '@/app/components/gallery/MixedRow'
 import TwoEqualRow from '@/app/components/gallery/TwoEqualRow'
 import TwoUnequalRow from '@/app/components/gallery/TwoUnequalRow'
-import { Photo } from '@/app/types/gallery'
-import Link from 'next/link'
 import { getAlbumsByCategory } from '@/app/utils/config'
+import { Album } from '@/app/types/config'
 
 const cormorant = Cormorant({
   subsets: ['latin'],
@@ -38,34 +37,9 @@ const LAYOUT_PHOTO_COUNTS: Record<LayoutType, number> = {
   twoUnequal: 2
 };
 
-// 获取对应类别的图片
-const getCategoryPhotos = (category: string): Photo[] => {
-  const photos: Photo[] = []
-  const basePath = `/images/gallery/${category}`
-  
-  // 为每个类别生成20张图片的数据
-  for (let i = 1; i <= 20; i++) {
-    photos.push({
-      id: i,
-      src: `${basePath}/${category}_${i}.jpg`,
-      alt: `${category} photo ${i}`,
-      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Collection ${i}`,
-      description: `A beautiful collection of ${category} photographs showcasing the wonders of ${category}.`,
-      photoCount: Math.floor(Math.random() * 20) + 10, // 随机生成10-30之间的照片数
-      createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 随机生成30天内的日期
-      galleryInfo: {
-        title: `${category.charAt(0).toUpperCase() + category.slice(1)} Collection ${i}`,
-        description: `A beautiful collection of ${category} photographs showcasing the wonders of ${category}.`
-      }
-    })
-  }
-  
-  return photos
-}
-
 export default function GalleryContent({ category, info }: GalleryContentProps) {
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
-  const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<DOMRect | null>(null)
+  const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null)
+  const [selectedAlbumPosition, setSelectedAlbumPosition] = useState<DOMRect | null>(null)
   const [currentGalleryInfo, setCurrentGalleryInfo] = useState<{ title: string; description: string }>({
     title: '',
     description: ''
@@ -74,22 +48,15 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   const [currentLayout, setCurrentLayout] = useState<'staggered' | 'center' | 'symmetric'>('staggered')
   
   // 从配置中获取相册数据
-  const photos = useMemo(() => {
+  const albums = useMemo(() => {
     const albums = getAlbumsByCategory(category)
     return albums.map(album => ({
       id: album.id,
-      src: album.coverImage,
-      alt: album.title,
+      coverImage: album.coverImage,
       title: album.title,
       description: album.description,
-      photoCount: album.photoCount,
+      photoCount: album.photos.length,
       createdAt: album.createdAt,
-      galleryInfo: {
-        title: album.title,
-        description: album.description,
-        photoCount: album.photoCount,
-        createdAt: album.createdAt
-      }
     }))
   }, [category])
 
@@ -97,12 +64,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   const layouts = useMemo(() => {
     const availableLayouts: LayoutType[] = ['three', 'mixed', 'twoEqual', 'twoUnequal'];
     const result: LayoutType[] = [];
-    let remainingPhotos = photos.length - 2; // 减去第一行的两张照片
+    let remainingAlbums = albums.length - 2; // 减去第一行的两张照片
 
-    while (remainingPhotos > 0) {
+    while (remainingAlbums > 0) {
       // 过滤出当前可用的布局类型
       const possibleLayouts = availableLayouts.filter(layout => 
-        LAYOUT_PHOTO_COUNTS[layout] <= remainingPhotos
+        LAYOUT_PHOTO_COUNTS[layout] <= remainingAlbums
       );
 
       if (possibleLayouts.length === 0) break;
@@ -110,31 +77,31 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
       // 随机选择一个布局
       const randomLayout = possibleLayouts[Math.floor(Math.random() * possibleLayouts.length)];
       result.push(randomLayout);
-      remainingPhotos -= LAYOUT_PHOTO_COUNTS[randomLayout];
+      remainingAlbums -= LAYOUT_PHOTO_COUNTS[randomLayout];
     }
 
     return result;
   }, []);
 
-  const handlePhotoClick = (photo: Photo, e: React.MouseEvent) => {
+  const handleAlbumClick = (album: Album, e: React.MouseEvent) => {
     e.preventDefault()
     const rect = e.currentTarget.getBoundingClientRect()
-    setSelectedPhotoPosition(rect)
-    setSelectedPhoto(photo)
-    setCurrentGalleryInfo(photo.galleryInfo)
+    setSelectedAlbumPosition(rect)
+    setSelectedAlbum(album)
+    setCurrentGalleryInfo(album)
   }
 
   const handleClose = () => {
-    setSelectedPhoto(null)
-    setSelectedPhotoPosition(null)
+    setSelectedAlbum(null)
+    setSelectedAlbumPosition(null)
   }
 
   const handleNextGallery = () => {
-    if (!selectedPhoto) return
-    const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id)
-    const nextPhoto = photos[(currentIndex + 1) % photos.length]
-    setSelectedPhoto(nextPhoto)
-    setCurrentGalleryInfo(nextPhoto.galleryInfo)
+    if (!selectedAlbum) return
+    const currentIndex = albums.findIndex(p => p.id === selectedAlbum.id)
+    const nextAlbum = albums[(currentIndex + 1) % albums.length]
+    setSelectedAlbum(nextAlbum)
+    setCurrentGalleryInfo(nextAlbum)
   }
 
   // 计算每个布局的起始索引
@@ -143,8 +110,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
     for (let i = 0; i < layoutIndex; i++) {
       startIndex += LAYOUT_PHOTO_COUNTS[layouts[i]];
     }
+    console.log(startIndex);
     return startIndex;
   };
+
+  console.log(albums);
+  console.log(layouts);
 
   return (
     <div className={`flex flex-col min-h-screen ${cormorant.variable} font-cormorant`}>
@@ -159,8 +130,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
               {/* First row - Always Two columns */}
               <TwoColumnRow 
-                photos={photos.slice(0, 2)} 
-                onPhotoClick={handlePhotoClick}
+                albums={albums.slice(0, 2)} 
+                onAlbumClick={handleAlbumClick}
                 info={info}
                 hideFirstPhotoLabels={true}
               />
@@ -174,33 +145,33 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     return (
                       <ThreeColumnRow 
                         key={`three-${index}`}
-                        photos={photos.slice(startIndex, startIndex + 3)} 
-                        onPhotoClick={handlePhotoClick}
+                        albums={albums.slice(startIndex, startIndex + 3)} 
+                        onAlbumClick={handleAlbumClick}
                       />
                     );
                   case 'mixed':
                     return (
                       <MixedRow 
                         key={`mixed-${index}`}
-                        mainPhoto={photos[startIndex]}
-                        sidePhotos={photos.slice(startIndex + 1, startIndex + 3)}
-                        onPhotoClick={handlePhotoClick}
+                        mainAlbum={albums[startIndex]}
+                        sideAlbums={albums.slice(startIndex + 1, startIndex + 3)}
+                        onAlbumClick={handleAlbumClick}
                       />
                     );
                   case 'twoEqual':
                     return (
                       <TwoEqualRow 
                         key={`twoEqual-${index}`}
-                        photos={photos.slice(startIndex, startIndex + 2)} 
-                        onPhotoClick={handlePhotoClick}
+                        albums={albums.slice(startIndex, startIndex + 2)} 
+                        onAlbumClick={handleAlbumClick}
                       />
                     );
                   case 'twoUnequal':
                     return (
                       <TwoUnequalRow 
                         key={`twoUnequal-${index}`}
-                        photos={photos.slice(startIndex, startIndex + 2)} 
-                        onPhotoClick={handlePhotoClick}
+                        albums={albums.slice(startIndex, startIndex + 2)} 
+                        onAlbumClick={handleAlbumClick}
                       />
                     );
                 }
@@ -215,7 +186,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
 
       {/* Floating Layer */}
       <AnimatePresence>
-        {selectedPhoto && selectedPhotoPosition && (
+        {selectedAlbum && selectedAlbumPosition && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -227,10 +198,10 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div 
                 initial={{
-                  x: selectedPhotoPosition.left - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
-                  y: selectedPhotoPosition.top - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
-                  width: selectedPhotoPosition.width,
-                  height: selectedPhotoPosition.height,
+                  x: selectedAlbumPosition.left - window.innerWidth / 2 + selectedAlbumPosition.width / 2,
+                  y: selectedAlbumPosition.top - window.innerHeight / 2 + selectedAlbumPosition.height / 2,
+                  width: selectedAlbumPosition.width,
+                  height: selectedAlbumPosition.height,
                 }}
                 animate={{
                   x: 0,
@@ -239,10 +210,10 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   height: '600px',
                 }}
                 exit={{
-                  x: selectedPhotoPosition.left - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
-                  y: selectedPhotoPosition.top - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
-                  width: selectedPhotoPosition.width,
-                  height: selectedPhotoPosition.height,
+                  x: selectedAlbumPosition.left - window.innerWidth / 2 + selectedAlbumPosition.width / 2,
+                  y: selectedAlbumPosition.top - window.innerHeight / 2 + selectedAlbumPosition.height / 2,
+                  width: selectedAlbumPosition.width,
+                  height: selectedAlbumPosition.height,
                 }}
                 transition={{
                   type: "spring", 
@@ -255,9 +226,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 <div className="w-2/3 relative">
                   <AnimatePresence mode="wait">
                     <motion.img
-                      key={selectedPhoto.id}
-                      src={selectedPhoto.src}
-                      alt={selectedPhoto.alt}
+                      key={selectedAlbum.id}
+                      src={selectedAlbum.coverImage}
                       className="w-full h-full object-cover"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -302,7 +272,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     <div className="space-y-4">
                       <button 
                         className="w-full py-2 px-4 bg-amber-100/80 text-gray-800 rounded-lg hover:bg-amber-100 transition-colors"
-                        onClick={() => window.location.href = `/gallery/${category}/${selectedPhoto.id}`}
+                        onClick={() => window.location.href = `/gallery/${category}/${selectedAlbum.id}`}
                       >
                         View Gallery Details
                       </button>
