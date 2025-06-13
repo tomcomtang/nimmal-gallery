@@ -11,11 +11,12 @@ export interface Album {
   photoCount: number
   createdAt: string
   coverImage: string
+  photos: Photo[]
 }
 
 export interface Photo {
   id: string
-  src: string
+  url: string
   alt: string
   title: string
   description: string
@@ -24,12 +25,6 @@ export interface Photo {
 export interface GalleryConfig {
   categories: {
     [key: string]: Category
-  }
-  albums: {
-    [key: string]: Album[]
-  }
-  photos: {
-    [key: string]: Photo[]
   }
 }
 

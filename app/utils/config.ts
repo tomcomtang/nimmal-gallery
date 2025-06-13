@@ -15,7 +15,8 @@ export function getAlbumsByCategory(category: string): Album[] {
 
 export function getAlbumById(categoryId: string, albumId: string): Album | undefined {
   let albums = config.categories[categoryId]?.albums.find(album => album.id === albumId);
-  return albums[0] && albums[0].photos || [];
+  console.log(albums);
+  return albums;
 }
 
 export function getAllCategories(): string[] {

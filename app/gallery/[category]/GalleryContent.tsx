@@ -50,14 +50,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   // 从配置中获取相册数据
   const albums = useMemo(() => {
     const albums = getAlbumsByCategory(category)
-    return albums.map(album => ({
-      id: album.id,
-      coverImage: album.coverImage,
-      title: album.title,
-      description: album.description,
-      photoCount: album.photos.length,
-      createdAt: album.createdAt,
-    }))
+    return albums;
   }, [category])
 
   // 生成随机布局
@@ -99,8 +92,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   const handleNextGallery = () => {
     if (!selectedAlbum) return
     const currentIndex = albums.findIndex(p => p.id === selectedAlbum.id)
-    const nextAlbum = albums[(currentIndex + 1) % albums.length]
-    setSelectedAlbum(nextAlbum)
+    const nextAlbum: Album = albums[(currentIndex + 1) % albums.length]
+    setSelectedAlbum(nextAlbum);
     setCurrentGalleryInfo(nextAlbum)
   }
 

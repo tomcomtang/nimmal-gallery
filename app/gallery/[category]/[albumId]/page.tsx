@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
-import { getCategoryInfo, getAlbumsByCategory } from '@/app/utils/config'
+import { getCategoryInfo, getAlbumsByCategory, getAlbumById } from '@/app/utils/config'
 
 // Layout template definitions
 const layoutTemplates = [
@@ -61,34 +61,19 @@ export default function AlbumDetail({ params }: PageProps) {
   const albumData = useMemo(() => {
     const basePath = `/images/gallery/${params.category}`
     const photos = []
-    
-    // 为每个相册生成12张图片的数据
-    for (let i = 1; i <= 12; i++) {
-      photos.push({
-        id: `${params.category}-${params.albumId}-${i}`,
-        src: `${basePath}/${params.category}_${i}.jpg`,
-        alt: `${params.category} photo ${i}`,
-        title: `${params.category.charAt(0).toUpperCase() + params.category.slice(1)} Photo ${i}`,
-        description: `A beautiful ${params.category} photograph showcasing the wonders of ${params.category}.`,
-        size: layoutTemplates[0].layout[i % layoutTemplates[0].layout.length].size
-      })
-    }
-
-    return {
-      id: params.albumId,
-      title: `${params.category.charAt(0).toUpperCase() + params.category.slice(1)} Collection ${params.albumId}`,
-      description: `A beautiful collection of ${params.category} photographs showcasing the wonders of ${params.category}.`,
-      photos
-    }
+    console.log(getAlbumById(params.category, params.albumId), params.category, params.albumId);
+    return getAlbumById(params.category, params.albumId)
   }, [params.category, params.albumId])
 
   // Get all photos
   const getAllPhotos = () => {
+    console.log(albumData?.photos);
     return albumData.photos;
   }
 
   // Get current layout photos
   const getCurrentLayoutPhotos = () => {
+    console.log(albumData);
     const template = layoutTemplates[currentLayout]
     return template.layout.map((item, index) => ({
       ...albumData.photos[index % albumData.photos.length],
@@ -194,8 +179,7 @@ export default function AlbumDetail({ params }: PageProps) {
                   >
                     <div className="w-full h-full overflow-hidden rounded-lg">
                       <img
-                        src={photo.src}
-                        alt={photo.alt}
+                        src={photo.url}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
@@ -276,8 +260,7 @@ export default function AlbumDetail({ params }: PageProps) {
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={selectedPhoto}
-                      src={getAllPhotos()[selectedPhoto].src}
-                      alt={getAllPhotos()[selectedPhoto].alt}
+                      src={getAllPhotos()[selectedPhoto].url}
                       className="w-full h-auto rounded-lg shadow-2xl"
                       initial={{ 
                         opacity: 0,
@@ -327,7 +310,7 @@ export default function AlbumDetail({ params }: PageProps) {
                     }}
                   >
                     <img
-                      src={photo.src}
+                      src={photo.url}
                       alt={photo.alt}
                       className="w-full h-full object-cover rounded"
                     />
