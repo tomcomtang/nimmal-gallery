@@ -12,7 +12,9 @@ export default function TwoUnequalRow({ photos, onPhotoClick }: TwoUnequalRowPro
         {photos.map((photo, index) => (
           <div 
             key={photo.id}
-            className={`md:col-span-${index === 0 ? '8' : '4'} group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer`}
+            className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
+              index === 0 ? 'md:col-span-8' : 'md:col-span-4'
+            }`}
             onClick={(e) => onPhotoClick(photo, e)}
           >
             <div className="w-full h-[360px] relative">
@@ -23,17 +25,18 @@ export default function TwoUnequalRow({ photos, onPhotoClick }: TwoUnequalRowPro
                     alt={photo.alt}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  {/* Photo count label */}
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                    <span className="text-sm font-medium text-gray-700">
-                      {photo.photoCount} Photos
-                    </span>
-                  </div>
-                  {/* 创建时间 */}
-                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                    <span className="text-sm font-medium text-gray-700">
-                      {new Date(photo.createdAt).toLocaleDateString()}
-                    </span>
+                  {/* 标签组 */}
+                  <div className="absolute top-4 right-4 flex gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                      <span className="text-sm font-medium text-gray-700">
+                        {photo.photoCount} Photos
+                      </span>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                      <span className="text-sm font-medium text-gray-700">
+                        {new Date(photo.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

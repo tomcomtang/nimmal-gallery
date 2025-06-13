@@ -7,9 +7,10 @@ interface TwoColumnRowProps {
     title: string
     description: string
   }
+  hideFirstPhotoLabels?: boolean
 }
 
-export default function TwoColumnRow({ photos, onPhotoClick, info }: TwoColumnRowProps) {
+export default function TwoColumnRow({ photos, onPhotoClick, info, hideFirstPhotoLabels = false }: TwoColumnRowProps) {
   return (
     <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
       {photos.map((photo, index) => (
@@ -26,18 +27,21 @@ export default function TwoColumnRow({ photos, onPhotoClick, info }: TwoColumnRo
                   alt={photo.alt}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                {/* Photo count label */}
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                  <span className="text-sm font-medium text-gray-700">
-                    {photo.photoCount} Photos
-                  </span>
-                </div>
-                {/* 创建时间 */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                  <span className="text-sm font-medium text-gray-700">
-                    {new Date(photo.createdAt).toLocaleDateString()}
-                  </span>
-                </div>
+                {/* 标签组 - 第一个相册且hideFirstPhotoLabels为true时不显示照片数和时间标签 */}
+                {!(index === 0 && hideFirstPhotoLabels) && (
+                  <div className="absolute top-4 right-4 flex gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                      <span className="text-sm font-medium text-gray-700">
+                        {photo.photoCount} Photos
+                      </span>
+                    </div>
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                      <span className="text-sm font-medium text-gray-700">
+                        {new Date(photo.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             {index === 0 && info && (

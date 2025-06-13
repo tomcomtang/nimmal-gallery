@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '@/app/components/Footer'
 import { Cormorant } from 'next/font/google'
@@ -22,153 +22,158 @@ const photos: Photo[] = [
   {
     id: 1,
     src: "/images/gallery-cover-work.jpg",
-    alt: "Photo 1",
-    title: "Morning Light",
-    description: "Captured in the early hours of dawn",
+    alt: "Gallery Photo 1",
+    title: "Nature Collection",
+    description: "A beautiful collection of nature photographs showcasing the wonders of the natural world.",
+    photoCount: 24,
+    createdAt: "2024-03-15",
     galleryInfo: {
-      title: "Morning Light Gallery",
-      description: "A collection of photographs capturing the ethereal beauty of morning light. Each image tells a story of dawn's first rays touching the world."
-    },
-    photoCount: 24
+      title: "Nature Collection Gallery",
+      description: "A beautiful collection of nature photographs showcasing the wonders of the natural world."
+    }
   },
   {
     id: 2,
-    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
-    alt: "Photo 2",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 2",
     title: "Urban Life",
-    description: "The rhythm of city streets",
+    description: "Capturing the essence of city life through unique perspectives and moments.",
+    photoCount: 18,
+    createdAt: "2024-03-14",
     galleryInfo: {
       title: "Urban Life Gallery",
-      description: "Exploring the vibrant energy of city life through street photography. From bustling markets to quiet alleyways, each frame captures the essence of urban existence."
-    },
-    photoCount: 18
+      description: "Capturing the essence of city life through unique perspectives and moments."
+    }
   },
   {
     id: 3,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
-    alt: "Photo 3",
-    title: "Natural Beauty",
-    description: "Exploring the wonders of nature",
+    src: "/images/gallery-cover-work.jpg",
+    alt: "Gallery Photo 3",
+    title: "Portrait Series",
+    description: "A series of intimate portraits revealing the depth of human emotion.",
+    photoCount: 12,
+    createdAt: "2024-03-13",
     galleryInfo: {
-      title: "Natural Beauty Gallery",
-      description: "A journey through nature's most breathtaking landscapes. From majestic mountains to serene lakes, each photograph celebrates the beauty of our natural world."
-    },
-    photoCount: 32
+      title: "Portrait Series Gallery",
+      description: "A series of intimate portraits revealing the depth of human emotion."
+    }
   },
   {
     id: 4,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
-    alt: "Photo 4",
-    title: "Architectural Details",
-    description: "The art of built environment",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 4",
+    title: "Architecture",
+    description: "Exploring the beauty of architectural design and structural forms.",
+    photoCount: 15,
+    createdAt: "2024-03-12",
     galleryInfo: {
-      title: "Architectural Details Gallery",
-      description: "A close look at the intricate details of architectural masterpieces. Each image reveals the hidden beauty in the structures that surround us."
-    },
-    photoCount: 15
+      title: "Architecture Gallery",
+      description: "Exploring the beauty of architectural design and structural forms."
+    }
   },
   {
     id: 5,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_Carbon_Front_Crop_2.jpg",
-    alt: "Photo 5",
-    title: "Street Stories",
-    description: "Everyday moments in the city",
+    src: "/images/gallery-cover-work.jpg",
+    alt: "Gallery Photo 5",
+    title: "Street Photography",
+    description: "Candid moments from the streets, telling stories of everyday life.",
+    photoCount: 20,
+    createdAt: "2024-03-11",
     galleryInfo: {
-      title: "Street Stories Gallery",
-      description: "Capturing the candid moments that make up city life. Each photograph is a window into the stories that unfold on our streets every day."
-    },
-    photoCount: 27
+      title: "Street Photography Gallery",
+      description: "Candid moments from the streets, telling stories of everyday life."
+    }
   },
   {
     id: 6,
-    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
-    alt: "Photo 6",
-    title: "Urban Geometry",
-    description: "Lines and shapes in the cityscape",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 6",
+    title: "Landscape",
+    description: "Breathtaking landscapes from around the world.",
+    photoCount: 16,
+    createdAt: "2024-03-10",
     galleryInfo: {
-      title: "Urban Geometry Gallery",
-      description: "Exploring the geometric patterns and shapes that define our urban landscape. Each image reveals the mathematical beauty hidden in our cities."
-    },
-    photoCount: 21,
-    useGrid: true,
-    coverImages: [
-      "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
-      "/images/gallery-cover-work.jpg",
-      "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
-      "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg"
-    ]
+      title: "Landscape Gallery",
+      description: "Breathtaking landscapes from around the world."
+    }
   },
   {
     id: 7,
-    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
-    alt: "Photo 7",
-    title: "City Lights",
-    description: "The magic of urban nights",
+    src: "/images/gallery-cover-work.jpg",
+    alt: "Gallery Photo 7",
+    title: "Wildlife",
+    description: "Capturing the beauty and majesty of wildlife in their natural habitats.",
+    photoCount: 22,
+    createdAt: "2024-03-09",
     galleryInfo: {
-      title: "City Lights Gallery",
-      description: "A nocturnal journey through the city's illuminated landscapes. Each photograph captures the unique atmosphere of urban nightlife."
-    },
-    photoCount: 19
+      title: "Wildlife Gallery",
+      description: "Capturing the beauty and majesty of wildlife in their natural habitats."
+    }
   },
   {
     id: 8,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
-    alt: "Photo 8",
-    title: "Portrait Stories",
-    description: "Faces and emotions",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 8",
+    title: "Abstract",
+    description: "Abstract compositions exploring form, color, and texture.",
+    photoCount: 14,
+    createdAt: "2024-03-08",
     galleryInfo: {
-      title: "Portrait Stories Gallery",
-      description: "A collection of intimate portraits that tell stories through expressions and emotions. Each face reveals a unique narrative."
-    },
-    photoCount: 25
+      title: "Abstract Gallery",
+      description: "Abstract compositions exploring form, color, and texture."
+    }
   },
   {
     id: 9,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_24_1-scaled-1.jpg",
-    alt: "Photo 9",
-    title: "Abstract Moments",
-    description: "Finding beauty in chaos",
+    src: "/images/gallery-cover-work.jpg",
+    alt: "Gallery Photo 9",
+    title: "Travel",
+    description: "Journeys and adventures captured through the lens.",
+    photoCount: 19,
+    createdAt: "2024-03-07",
     galleryInfo: {
-      title: "Abstract Moments Gallery",
-      description: "Exploring the abstract beauty in everyday scenes. Each image challenges our perception of reality."
-    },
-    photoCount: 16
+      title: "Travel Gallery",
+      description: "Journeys and adventures captured through the lens."
+    }
   },
   {
     id: 10,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_Carbon_Front_Crop_2.jpg",
-    alt: "Photo 10",
-    title: "Seasonal Changes",
-    description: "Nature's transformation",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 10",
+    title: "Food",
+    description: "Culinary delights and gastronomic experiences.",
+    photoCount: 17,
+    createdAt: "2024-03-06",
     galleryInfo: {
-      title: "Seasonal Changes Gallery",
-      description: "Documenting the beautiful transitions between seasons. Each photograph captures nature's ever-changing palette."
-    },
-    photoCount: 28
+      title: "Food Gallery",
+      description: "Culinary delights and gastronomic experiences."
+    }
   },
   {
     id: 11,
-    src: "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
-    alt: "Photo 11",
-    title: "Urban Patterns",
-    description: "The rhythm of the city",
+    src: "/images/gallery-cover-work.jpg",
+    alt: "Gallery Photo 11",
+    title: "Fashion",
+    description: "Fashion photography showcasing style and elegance.",
+    photoCount: 21,
+    createdAt: "2024-03-05",
     galleryInfo: {
-      title: "Urban Patterns Gallery",
-      description: "Discovering the repetitive patterns and rhythms that make up our urban environment. Each image reveals the hidden order in city chaos."
-    },
-    photoCount: 22
+      title: "Fashion Gallery",
+      description: "Fashion photography showcasing style and elegance."
+    }
   },
   {
     id: 12,
-    src: "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg",
-    alt: "Photo 3",
-    title: "Natural Beauty",
-    description: "Exploring the wonders of nature",
+    src: "/images/work-album-cover.jpg",
+    alt: "Gallery Photo 12",
+    title: "Sports",
+    description: "Dynamic moments from the world of sports.",
+    photoCount: 13,
+    createdAt: "2024-03-04",
     galleryInfo: {
-      title: "Natural Beauty Gallery",
-      description: "A journey through nature's most breathtaking landscapes. From majestic mountains to serene lakes, each photograph celebrates the beauty of our natural world."
-    },
-    photoCount: 32
+      title: "Sports Gallery",
+      description: "Dynamic moments from the world of sports."
+    }
   }
 ]
 
@@ -180,10 +185,44 @@ interface GalleryContentProps {
   };
 }
 
+// 定义布局类型
+type LayoutType = 'three' | 'mixed' | 'twoEqual' | 'twoUnequal';
+
+// 定义每个布局类型需要的照片数量
+const LAYOUT_PHOTO_COUNTS: Record<LayoutType, number> = {
+  three: 3,
+  mixed: 3, // 1个主图 + 2个侧边图
+  twoEqual: 2,
+  twoUnequal: 2
+};
+
 export default function GalleryContent({ category, info }: GalleryContentProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
   const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
   const [currentGalleryInfo, setCurrentGalleryInfo] = useState(info)
+
+  // 生成随机布局
+  const layouts = useMemo(() => {
+    const availableLayouts: LayoutType[] = ['three', 'mixed', 'twoEqual', 'twoUnequal'];
+    const result: LayoutType[] = [];
+    let remainingPhotos = photos.length - 2; // 减去第一行的两张照片
+
+    while (remainingPhotos > 0) {
+      // 过滤出当前可用的布局类型
+      const possibleLayouts = availableLayouts.filter(layout => 
+        LAYOUT_PHOTO_COUNTS[layout] <= remainingPhotos
+      );
+
+      if (possibleLayouts.length === 0) break;
+
+      // 随机选择一个布局
+      const randomLayout = possibleLayouts[Math.floor(Math.random() * possibleLayouts.length)];
+      result.push(randomLayout);
+      remainingPhotos -= LAYOUT_PHOTO_COUNTS[randomLayout];
+    }
+
+    return result;
+  }, []);
 
   const handlePhotoClick = (photo: Photo, e: React.MouseEvent) => {
     e.preventDefault()
@@ -211,6 +250,15 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
     setCurrentGalleryInfo(nextPhoto.galleryInfo)
   }
 
+  // 计算每个布局的起始索引
+  const getLayoutStartIndex = (layoutIndex: number) => {
+    let startIndex = 2; // 从第三张照片开始（前两张用于第一行）
+    for (let i = 0; i < layoutIndex; i++) {
+      startIndex += LAYOUT_PHOTO_COUNTS[layouts[i]];
+    }
+    return startIndex;
+  };
+
   return (
     <div className={`min-h-screen pt-40 pb-12 ${cormorant.variable} font-cormorant`}>
       {/* Content Layer */}
@@ -218,37 +266,54 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
         {/* Photo Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* First row - Two columns */}
+            {/* First row - Always Two columns */}
             <TwoColumnRow 
               photos={photos.slice(0, 2)} 
               onPhotoClick={handlePhotoClick}
               info={info}
+              hideFirstPhotoLabels={true}
             />
 
-            {/* Second row - Three columns */}
-            <ThreeColumnRow 
-              photos={photos.slice(2, 5)} 
-              onPhotoClick={handlePhotoClick}
-            />
-
-            {/* Third row - Mixed layout */}
-            <MixedRow 
-              mainPhoto={photos[5]}
-              sidePhotos={photos.slice(6, 8)}
-              onPhotoClick={handlePhotoClick}
-            />
-
-            {/* Fourth row - Two equal columns */}
-            <TwoEqualRow 
-              photos={photos.slice(8, 10)} 
-              onPhotoClick={handlePhotoClick}
-            />
-
-            {/* Fifth row - Two unequal columns */}
-            <TwoUnequalRow 
-              photos={photos.slice(10, 12)} 
-              onPhotoClick={handlePhotoClick}
-            />
+            {/* Random layouts for remaining photos */}
+            {layouts.map((layout, index) => {
+              const startIndex = getLayoutStartIndex(index);
+              
+              switch (layout) {
+                case 'three':
+                  return (
+                    <ThreeColumnRow 
+                      key={`three-${index}`}
+                      photos={photos.slice(startIndex, startIndex + 3)} 
+                      onPhotoClick={handlePhotoClick}
+                    />
+                  );
+                case 'mixed':
+                  return (
+                    <MixedRow 
+                      key={`mixed-${index}`}
+                      mainPhoto={photos[startIndex]}
+                      sidePhotos={photos.slice(startIndex + 1, startIndex + 3)}
+                      onPhotoClick={handlePhotoClick}
+                    />
+                  );
+                case 'twoEqual':
+                  return (
+                    <TwoEqualRow 
+                      key={`twoEqual-${index}`}
+                      photos={photos.slice(startIndex, startIndex + 2)} 
+                      onPhotoClick={handlePhotoClick}
+                    />
+                  );
+                case 'twoUnequal':
+                  return (
+                    <TwoUnequalRow 
+                      key={`twoUnequal-${index}`}
+                      photos={photos.slice(startIndex, startIndex + 2)} 
+                      onPhotoClick={handlePhotoClick}
+                    />
+                  );
+              }
+            })}
           </div>
         </div>
       </div>
