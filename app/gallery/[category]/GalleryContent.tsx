@@ -302,7 +302,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     <div className="space-y-4">
                       <button 
                         className="w-full py-2 px-4 bg-amber-100/80 text-gray-800 rounded-lg hover:bg-amber-100 transition-colors"
-                        onClick={() => window.location.href = `/gallery/${category}/detail`}
+                        onClick={() => window.location.href = `/gallery/${category}/${selectedPhoto.id}`}
                       >
                         View Gallery Details
                       </button>

@@ -1,13 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import Link from 'next/link'
-import Navbar from '../../../components/Navbar'
-import Footer from '../../../components/Footer'
-import { getCategoryInfo, getAlbumsByCategory } from '@/app/utils/config'
+import { Photo } from '@/app/types/gallery'
 
 // Layout template definitions
 const layoutTemplates = [
@@ -46,52 +42,26 @@ const layoutTemplates = [
   }
 ]
 
-interface PageProps {
-  params: {
-    category: string
-    albumId: string
-  }
+interface AlbumContentProps {
+  photos: Photo[]
+  title: string
+  description: string
 }
 
-export default function AlbumDetail({ params }: PageProps) {
+export default function AlbumContent({ photos, title, description }: AlbumContentProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null)
   const [currentLayout, setCurrentLayout] = useState(0)
 
-  // 获取相册数据
-  const albumData = useMemo(() => {
-    const basePath = `/images/gallery/${params.category}`
-    const photos = []
-    
-    // 为每个相册生成12张图片的数据
-    for (let i = 1; i <= 12; i++) {
-      photos.push({
-        id: `${params.category}-${params.albumId}-${i}`,
-        src: `${basePath}/${params.category}_${i}.jpg`,
-        alt: `${params.category} photo ${i}`,
-        title: `${params.category.charAt(0).toUpperCase() + params.category.slice(1)} Photo ${i}`,
-        description: `A beautiful ${params.category} photograph showcasing the wonders of ${params.category}.`,
-        size: layoutTemplates[0].layout[i % layoutTemplates[0].layout.length].size
-      })
-    }
-
-    return {
-      id: params.albumId,
-      title: `${params.category.charAt(0).toUpperCase() + params.category.slice(1)} Collection ${params.albumId}`,
-      description: `A beautiful collection of ${params.category} photographs showcasing the wonders of ${params.category}.`,
-      photos
-    }
-  }, [params.category, params.albumId])
-
   // Get all photos
   const getAllPhotos = () => {
-    return albumData.photos;
+    return photos;
   }
 
   // Get current layout photos
   const getCurrentLayoutPhotos = () => {
     const template = layoutTemplates[currentLayout]
     return template.layout.map((item, index) => ({
-      ...albumData.photos[index % albumData.photos.length],
+      ...photos[index % photos.length],
       size: item.size
     }))
   }
@@ -99,7 +69,7 @@ export default function AlbumDetail({ params }: PageProps) {
   const handlePhotoClick = (index: number) => {
     // Calculate index in full photo list
     const photoInLayout = getCurrentLayoutPhotos()[index]
-    const globalIndex = albumData.photos.findIndex(p => p.id === photoInLayout.id)
+    const globalIndex = photos.findIndex(p => p.id === photoInLayout.id)
     setSelectedPhoto(globalIndex)
   }
 
@@ -142,94 +112,68 @@ export default function AlbumDetail({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Navigation bar */}
-      <Navbar />
-
-      {/* Main content area */}
-      <main className="flex-grow pt-40 pb-4">
-        {/* Background layer */}
-        <div className="fixed inset-0 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 opacity-50" />
-        
-        {/* Content layer */}
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Back button */}
-          <div className="max-w-6xl mx-auto mb-2">
-            <Link
-              href={`/gallery/${params.category}`}
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <ChevronLeft size={20} className="mr-2" />
-              Back to Gallery
-            </Link>
-          </div>
-
-          {/* Album information area */}
-          <div className="max-w-6xl mx-auto mb-2">
-            <div className="text-center">
-              <h1 className="text-2xl font-light text-gray-900">{albumData.title}</h1>
-              <p className="text-sm text-gray-600 mt-1 max-w-2xl mx-auto">{albumData.description}</p>
-            </div>
-          </div>
-
-          {/* Photos grid */}
-          <div className="max-w-6xl mx-auto h-[550px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentLayout}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
-              >
-                {getCurrentLayoutPhotos().map((photo, index) => (
-                  <motion.div
-                    key={`${currentLayout}-${photo.id}`}
-                    className={`relative group cursor-pointer ${getPhotoSizeClass(photo.size)}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    onClick={() => handlePhotoClick(index)}
-                  >
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photo.src}
-                        alt={photo.alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Pagination controls */}
-          <div className="max-w-6xl mx-auto mt-2 flex justify-center items-center gap-4">
-            <button
-              onClick={() => handleLayoutChange('prev')}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
-              disabled={currentLayout === 0}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <span className="text-sm font-medium text-gray-600">
-              {currentLayout + 1} / {layoutTemplates.length}
-            </span>
-            <button
-              onClick={() => handleLayoutChange('next')}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
-              disabled={currentLayout === layoutTemplates.length - 1}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+    <>
+      {/* Album information area */}
+      <div className="max-w-6xl mx-auto mb-2">
+        <div className="text-center">
+          <h1 className="text-2xl font-light text-gray-900">{title}</h1>
+          <p className="text-sm text-gray-600 mt-1 max-w-2xl mx-auto">{description}</p>
         </div>
-      </main>
+      </div>
 
-      {/* Footer */}
-      <Footer />
+      {/* Photos grid */}
+      <div className="max-w-6xl mx-auto h-[550px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentLayout}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full"
+          >
+            {getCurrentLayoutPhotos().map((photo, index) => (
+              <motion.div
+                key={`${currentLayout}-${photo.id}`}
+                className={`relative group cursor-pointer ${getPhotoSizeClass(photo.size)}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => handlePhotoClick(index)}
+              >
+                <div className="w-full h-full overflow-hidden rounded-lg">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Pagination controls */}
+      <div className="max-w-6xl mx-auto mt-2 flex justify-center items-center gap-4">
+        <button
+          onClick={() => handleLayoutChange('prev')}
+          className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
+          disabled={currentLayout === 0}
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <span className="text-sm font-medium text-gray-600">
+          {currentLayout + 1} / {layoutTemplates.length}
+        </span>
+        <button
+          onClick={() => handleLayoutChange('next')}
+          className="p-2 rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50"
+          disabled={currentLayout === layoutTemplates.length - 1}
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
 
       {/* Photo preview overlay */}
       <AnimatePresence>
@@ -338,6 +282,6 @@ export default function AlbumDetail({ params }: PageProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   )
 } 
