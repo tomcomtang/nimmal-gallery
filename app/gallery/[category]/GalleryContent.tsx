@@ -107,11 +107,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
   const [currentGalleryInfo, setCurrentGalleryInfo] = useState(info)
 
-  const handlePhotoClick = (photo: typeof photos[0], event: React.MouseEvent) => {
-    const rect = (event.target as HTMLElement).getBoundingClientRect()
+  const handlePhotoClick = (photo: typeof photos[0], e: React.MouseEvent) => {
+    e.preventDefault()
+    const rect = e.currentTarget.getBoundingClientRect()
     setSelectedPhotoPosition({
-      x: rect.x,
-      y: rect.y,
+      x: rect.left,
+      y: rect.top,
       width: rect.width,
       height: rect.height
     })
@@ -119,21 +120,17 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
     setCurrentGalleryInfo(photo.galleryInfo)
   }
 
-  const handleNextGallery = () => {
-    if (selectedPhoto) {
-      const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id)
-      const nextIndex = (currentIndex + 1) % photos.length
-      const nextPhoto = photos[nextIndex]
-      setSelectedPhoto(nextPhoto)
-      setCurrentGalleryInfo(nextPhoto.galleryInfo)
-      // 保持当前的位置信息不变，这样动画会更流畅
-      setSelectedPhotoPosition(prev => prev)
-    }
-  }
-
   const handleClose = () => {
     setSelectedPhoto(null)
     setSelectedPhotoPosition(null)
+  }
+
+  const handleNextGallery = () => {
+    if (!selectedPhoto) return
+    const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id)
+    const nextPhoto = photos[(currentIndex + 1) % photos.length]
+    setSelectedPhoto(nextPhoto)
+    setCurrentGalleryInfo(nextPhoto.galleryInfo)
   }
 
   return (
@@ -146,17 +143,15 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
             {photos.slice(0, 6).map((photo, index) => (
               <div 
                 key={photo.id}
-                className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
+                className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
                   index === 0 ? 'md:col-span-7' : 
                   index === 1 ? 'md:col-span-5' : 
                   index === 5 ? 'md:col-span-7 h-[500px]' :
                   'md:col-span-4'
-                }`}
+                } ${index === 0 ? '' : 'cursor-pointer'}`}
                 onClick={(e) => {
-                  if (index === 0) {
+                  if (index !== 0) {
                     handlePhotoClick(photo, e)
-                  } else {
-                    window.location.href = `/gallery/${category}/${photo.id}`
                   }
                 }}
               >
@@ -343,7 +338,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
       {/* 浮层 */}
       <AnimatePresence>
         {selectedPhoto && selectedPhotoPosition && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -371,7 +366,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   width: selectedPhotoPosition.width,
                   height: selectedPhotoPosition.height,
                 }}
-                transition={{ 
+                transition={{
                   type: "spring", 
                   duration: 1.2,
                   bounce: 0.1
