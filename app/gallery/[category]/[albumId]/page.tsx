@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { getCategoryInfo, getAlbumsByCategory, getAlbumById } from '@/app/utils/config'
+import { Album } from '@/app/types/config'
 
 // Layout template definitions
 const layoutTemplates = [
@@ -59,21 +60,16 @@ export default function AlbumDetail({ params }: PageProps) {
 
   // 获取相册数据
   const albumData = useMemo(() => {
-    const basePath = `/images/gallery/${params.category}`
-    const photos = []
-    console.log(getAlbumById(params.category, params.albumId), params.category, params.albumId);
-    return getAlbumById(params.category, params.albumId)
+    return getAlbumById(params.category, params.albumId) as Album
   }, [params.category, params.albumId])
 
   // Get all photos
   const getAllPhotos = () => {
-    console.log(albumData?.photos);
-    return albumData.photos;
+    return albumData?.photos || [];
   }
 
   // Get current layout photos
   const getCurrentLayoutPhotos = () => {
-    console.log(albumData);
     const template = layoutTemplates[currentLayout]
     return template.layout.map((item, index) => ({
       ...albumData.photos[index % albumData.photos.length],

@@ -17,7 +17,7 @@ export interface Album {
 export interface Photo {
   id: string
   url: string
-  alt: string
+  alt?: string
   title: string
   description: string
 }
