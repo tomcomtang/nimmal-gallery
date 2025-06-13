@@ -3,17 +3,21 @@ import GalleryContent from './GalleryContent'
 
 // 定义类别信息
 const categoryInfo = {
-  work: {
-    title: 'Work',
-    description: 'Showcasing professional projects and creative works',
+  nature: {
+    title: 'Nature',
+    description: 'Capturing the beauty of natural landscapes and wildlife',
   },
-  life: {
-    title: 'Life',
-    description: 'Capturing the beauty of everyday moments and personal stories',
+  urban: {
+    title: 'Urban',
+    description: 'Exploring the dynamic life and architecture of cities',
   },
   travel: {
     title: 'Travel',
-    description: 'Exploring the world through the lens of a photographer',
+    description: 'Journeys and adventures from around the world',
+  },
+  architecture: {
+    title: 'Architecture',
+    description: 'Showcasing remarkable architectural designs and structures',
   },
 }
 

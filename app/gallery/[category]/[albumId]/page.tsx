@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
@@ -45,109 +45,29 @@ const layoutTemplates = [
   }
 ]
 
-// Sample album data
-const albumData = {
-  id: 'urban-geometry',
-  title: 'Urban Geometry',
-  description: 'Discover the hidden patterns of city life.',
-  photos: [
-    {
-      id: 'ug1',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 1',
-      title: 'City Patterns',
-      description: 'Urban Geometry 1',
-      size: 'large'
-    },
-    {
-      id: 'ug2',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 2',
-      title: 'Urban Geometry 2',
-      description: 'Urban Geometry 2',
-      size: 'medium'
-    },
-    {
-      id: 'ug3',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 3',
-      title: 'Urban Geometry 3',
-      description: 'Urban Geometry 3',
-      size: 'medium'
-    },
-    {
-      id: 'ug4',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 4',
-      title: 'Urban Geometry 4',
-      description: 'Urban Geometry 4',
-      size: 'small'
-    },
-    {
-      id: 'ug5',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 5',
-      title: 'Urban Geometry 5',
-      description: 'Urban Geometry 5',
-      size: 'small'
-    },
-    {
-      id: 'ug6',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 6',
-      title: 'Urban Geometry 6',
-      description: 'Urban Geometry 6',
-      size: 'small'
-    },
-    {
-      id: 'ug7',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 7',
-      title: 'Urban Geometry 7',
-      description: 'Urban Geometry 7',
-      size: 'small'
-    },
-    {
-      id: 'ug8',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 8',
-      title: 'Urban Geometry 8',
-      description: 'Urban Geometry 8',
-      size: 'small'
-    },
-    {
-      id: 'ug9',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 9',
-      title: 'Urban Geometry 9',
-      description: 'Urban Geometry 9',
-      size: 'small'
-    },
-    {
-      id: 'ug10',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 10',
-      title: 'Urban Geometry 10',
-      description: 'Urban Geometry 10',
-      size: 'small'
-    },
-    {
-      id: 'ug11',
-      src: '/images/gallery-cover-work.jpg',
-      alt: 'Urban Geometry 11',
-      title: 'Urban Geometry 11',
-      description: 'Urban Geometry 11',
-      size: 'small'
-    },
-    {
-      id: 'ug12',
-      src: '/images/work-album-cover.jpg',
-      alt: 'Urban Geometry 12',
-      title: 'Urban Geometry 12',
-      description: 'Urban Geometry 12',
-      size: 'small'
-    }
-  ]
+// 获取相册数据
+const getAlbumData = (category: string, albumId: string) => {
+  const basePath = `/images/gallery/${category}`
+  const photos = []
+  
+  // 为每个相册生成12张图片的数据
+  for (let i = 1; i <= 12; i++) {
+    photos.push({
+      id: `${category}-${albumId}-${i}`,
+      src: `${basePath}/${category}_${i}.jpg`,
+      alt: `${category} photo ${i}`,
+      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${i}`,
+      description: `A beautiful ${category} photograph showcasing the wonders of ${category}.`,
+      size: layoutTemplates[0].layout[i % layoutTemplates[0].layout.length].size
+    })
+  }
+
+  return {
+    id: albumId,
+    title: `${category.charAt(0).toUpperCase() + category.slice(1)} Collection ${albumId}`,
+    description: `A beautiful collection of ${category} photographs showcasing the wonders of ${category}.`,
+    photos
+  }
 }
 
 interface PageProps {
@@ -160,6 +80,9 @@ interface PageProps {
 export default function AlbumDetail({ params }: PageProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null)
   const [currentLayout, setCurrentLayout] = useState(0)
+
+  // 获取相册数据
+  const albumData = useMemo(() => getAlbumData(params.category, params.albumId), [params.category, params.albumId])
 
   // Get all photos
   const getAllPhotos = () => {

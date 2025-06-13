@@ -196,10 +196,41 @@ const LAYOUT_PHOTO_COUNTS: Record<LayoutType, number> = {
   twoUnequal: 2
 };
 
+// 获取对应类别的图片
+const getCategoryPhotos = (category: string): Photo[] => {
+  const photos: Photo[] = []
+  const basePath = `/images/gallery/${category}`
+  
+  // 为每个类别生成20张图片的数据
+  for (let i = 1; i <= 20; i++) {
+    photos.push({
+      id: i,
+      src: `${basePath}/${category}_${i}.jpg`,
+      alt: `${category} photo ${i}`,
+      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Collection ${i}`,
+      description: `A beautiful collection of ${category} photographs showcasing the wonders of ${category}.`,
+      photoCount: Math.floor(Math.random() * 20) + 10, // 随机生成10-30之间的照片数
+      createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 随机生成30天内的日期
+      galleryInfo: {
+        title: `${category.charAt(0).toUpperCase() + category.slice(1)} Collection ${i}`,
+        description: `A beautiful collection of ${category} photographs showcasing the wonders of ${category}.`
+      }
+    })
+  }
+  
+  return photos
+}
+
 export default function GalleryContent({ category, info }: GalleryContentProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
-  const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
-  const [currentGalleryInfo, setCurrentGalleryInfo] = useState(info)
+  const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<DOMRect | null>(null)
+  const [currentGalleryInfo, setCurrentGalleryInfo] = useState<{ title: string; description: string }>({
+    title: '',
+    description: ''
+  })
+
+  // 获取当前类别的图片
+  const photos = useMemo(() => getCategoryPhotos(category), [category])
 
   // 生成随机布局
   const layouts = useMemo(() => {
@@ -227,12 +258,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   const handlePhotoClick = (photo: Photo, e: React.MouseEvent) => {
     e.preventDefault()
     const rect = e.currentTarget.getBoundingClientRect()
-    setSelectedPhotoPosition({
-      x: rect.left,
-      y: rect.top,
-      width: rect.width,
-      height: rect.height
-    })
+    setSelectedPhotoPosition(rect)
     setSelectedPhoto(photo)
     setCurrentGalleryInfo(photo.galleryInfo)
   }
@@ -332,8 +358,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div 
                 initial={{
-                  x: selectedPhotoPosition.x - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
-                  y: selectedPhotoPosition.y - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
+                  x: selectedPhotoPosition.left - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
+                  y: selectedPhotoPosition.top - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
                   width: selectedPhotoPosition.width,
                   height: selectedPhotoPosition.height,
                 }}
@@ -344,8 +370,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   height: '600px',
                 }}
                 exit={{
-                  x: selectedPhotoPosition.x - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
-                  y: selectedPhotoPosition.y - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
+                  x: selectedPhotoPosition.left - window.innerWidth / 2 + selectedPhotoPosition.width / 2,
+                  y: selectedPhotoPosition.top - window.innerHeight / 2 + selectedPhotoPosition.height / 2,
                   width: selectedPhotoPosition.width,
                   height: selectedPhotoPosition.height,
                 }}

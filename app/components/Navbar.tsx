@@ -2,9 +2,10 @@ import Link from 'next/link'
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Work', href: '/gallery/work' },
-  { name: 'Life', href: '/gallery/life' },
+  { name: 'Nature', href: '/gallery/nature' },
+  { name: 'Urban', href: '/gallery/urban' },
   { name: 'Travel', href: '/gallery/travel' },
+  { name: 'Architecture', href: '/gallery/architecture' },
 ]
 
 export default function Navbar() {
