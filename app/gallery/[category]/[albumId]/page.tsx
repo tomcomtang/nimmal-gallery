@@ -8,9 +8,9 @@ import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
-// 布局模板定义
+// Layout template definitions
 const layoutTemplates = [
-  // 模板1：交错布局
+  // Template 1: Staggered layout
   {
     id: 1,
     name: 'Staggered',
@@ -21,7 +21,7 @@ const layoutTemplates = [
       { size: 'small', position: 'right-bottom' }
     ]
   },
-  // 模板2：大图居中，两侧小图
+  // Template 2: Center focus with side images
   {
     id: 2,
     name: 'Center Focus',
@@ -33,7 +33,7 @@ const layoutTemplates = [
       { size: 'medium', position: 'bottom-right' }
     ]
   },
-  // 模板3：对称布局
+  // Template 3: Symmetric layout
   {
     id: 3,
     name: 'Symmetric',
@@ -45,7 +45,7 @@ const layoutTemplates = [
   }
 ]
 
-// 示例相册数据
+// Sample album data
 const albumData = {
   id: 'urban-geometry',
   title: 'Urban Geometry',
@@ -114,6 +114,38 @@ const albumData = {
       title: 'Urban Geometry 8',
       description: 'Urban Geometry 8',
       size: 'small'
+    },
+    {
+      id: 'ug9',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 9',
+      title: 'Urban Geometry 9',
+      description: 'Urban Geometry 9',
+      size: 'small'
+    },
+    {
+      id: 'ug10',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 10',
+      title: 'Urban Geometry 10',
+      description: 'Urban Geometry 10',
+      size: 'small'
+    },
+    {
+      id: 'ug11',
+      src: '/images/gallery-cover-work.jpg',
+      alt: 'Urban Geometry 11',
+      title: 'Urban Geometry 11',
+      description: 'Urban Geometry 11',
+      size: 'small'
+    },
+    {
+      id: 'ug12',
+      src: '/images/work-album-cover.jpg',
+      alt: 'Urban Geometry 12',
+      title: 'Urban Geometry 12',
+      description: 'Urban Geometry 12',
+      size: 'small'
     }
   ]
 }
@@ -129,8 +161,25 @@ export default function AlbumDetail({ params }: PageProps) {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null)
   const [currentLayout, setCurrentLayout] = useState(0)
 
+  // Get all photos
+  const getAllPhotos = () => {
+    return albumData.photos;
+  }
+
+  // Get current layout photos
+  const getCurrentLayoutPhotos = () => {
+    const template = layoutTemplates[currentLayout]
+    return template.layout.map((item, index) => ({
+      ...albumData.photos[index % albumData.photos.length],
+      size: item.size
+    }))
+  }
+
   const handlePhotoClick = (index: number) => {
-    setSelectedPhoto(index)
+    // Calculate index in full photo list
+    const photoInLayout = getCurrentLayoutPhotos()[index]
+    const globalIndex = albumData.photos.findIndex(p => p.id === photoInLayout.id)
+    setSelectedPhoto(globalIndex)
   }
 
   const handleClose = () => {
@@ -139,13 +188,13 @@ export default function AlbumDetail({ params }: PageProps) {
 
   const handlePrevious = () => {
     if (selectedPhoto !== null) {
-      setSelectedPhoto((selectedPhoto - 1 + albumData.photos.length) % albumData.photos.length)
+      setSelectedPhoto((selectedPhoto - 1 + getAllPhotos().length) % getAllPhotos().length)
     }
   }
 
   const handleNext = () => {
     if (selectedPhoto !== null) {
-      setSelectedPhoto((selectedPhoto + 1) % albumData.photos.length)
+      setSelectedPhoto((selectedPhoto + 1) % getAllPhotos().length)
     }
   }
 
@@ -157,7 +206,7 @@ export default function AlbumDetail({ params }: PageProps) {
     }
   }
 
-  // 获取照片尺寸的类名
+  // Get photo size class
   const getPhotoSizeClass = (size: string) => {
     switch (size) {
       case 'large':
@@ -171,28 +220,19 @@ export default function AlbumDetail({ params }: PageProps) {
     }
   }
 
-  // 获取当前布局的照片
-  const getCurrentLayoutPhotos = () => {
-    const template = layoutTemplates[currentLayout]
-    return template.layout.map((item, index) => ({
-      ...albumData.photos[index % albumData.photos.length],
-      size: item.size
-    }))
-  }
-
   return (
     <div className="min-h-screen flex flex-col">
-      {/* 导航栏 */}
+      {/* Navigation bar */}
       <Navbar />
 
-      {/* 主要内容区域 */}
+      {/* Main content area */}
       <main className="flex-grow pt-40 pb-4">
-        {/* 背景层 */}
+        {/* Background layer */}
         <div className="fixed inset-0 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 opacity-50" />
         
-        {/* 内容层 */}
+        {/* Content layer */}
         <div className="container mx-auto px-4 relative z-10">
-          {/* 返回按钮 */}
+          {/* Back button */}
           <div className="max-w-6xl mx-auto mb-2">
             <Link 
               href={`/gallery/${params.category}`}
@@ -203,7 +243,7 @@ export default function AlbumDetail({ params }: PageProps) {
             </Link>
           </div>
 
-          {/* 相册信息区域 */}
+          {/* Album information area */}
           <div className="max-w-6xl mx-auto mb-2">
             <div className="text-center">
               <h1 className="text-2xl font-light text-gray-900">{albumData.title}</h1>
@@ -211,7 +251,7 @@ export default function AlbumDetail({ params }: PageProps) {
             </div>
           </div>
 
-          {/* 照片网格 */}
+          {/* Photos grid */}
           <div className="max-w-6xl mx-auto h-[550px]">
             <AnimatePresence mode="wait">
               <motion.div
@@ -244,7 +284,7 @@ export default function AlbumDetail({ params }: PageProps) {
             </AnimatePresence>
           </div>
 
-          {/* 翻页控件 */}
+          {/* Pagination controls */}
           <div className="max-w-6xl mx-auto mt-2 flex justify-center items-center gap-4">
             <button
               onClick={() => handleLayoutChange('prev')}
@@ -267,39 +307,113 @@ export default function AlbumDetail({ params }: PageProps) {
         </div>
       </main>
 
-      {/* 页脚 */}
+      {/* Footer */}
       <Footer />
 
-      {/* 照片预览浮层 */}
+      {/* Photo preview overlay */}
       <AnimatePresence>
         {selectedPhoto !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 z-50 flex flex-col"
             onClick={() => setSelectedPhoto(null)}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative max-w-4xl w-full"
-              onClick={e => e.stopPropagation()}
-            >
-              <img
-                src={getCurrentLayoutPhotos()[selectedPhoto].src}
-                alt={getCurrentLayoutPhotos()[selectedPhoto].alt}
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
+            {/* Top close button */}
+            <div className="absolute top-4 right-4 z-10">
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+                className="text-white hover:text-gray-300 transition-colors"
               >
                 <X size={24} />
               </button>
-            </motion.div>
+            </div>
+
+            {/* Main image area */}
+            <div className="flex-grow flex items-center justify-center p-4">
+              <div className="flex items-center gap-8">
+                {/* Left switch button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevious();
+                  }}
+                  className="text-white hover:text-gray-300 transition-colors p-2"
+                >
+                  <ChevronLeft size={40} />
+                </button>
+
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative max-w-4xl w-full overflow-hidden"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={selectedPhoto}
+                      src={getAllPhotos()[selectedPhoto].src}
+                      alt={getAllPhotos()[selectedPhoto].alt}
+                      className="w-full h-auto rounded-lg shadow-2xl"
+                      initial={{ 
+                        opacity: 0,
+                        x: selectedPhoto > (selectedPhoto - 1 + getAllPhotos().length) % getAllPhotos().length ? 100 : -100
+                      }}
+                      animate={{ 
+                        opacity: 1,
+                        x: 0
+                      }}
+                      exit={{ 
+                        opacity: 0,
+                        x: selectedPhoto > (selectedPhoto - 1 + getAllPhotos().length) % getAllPhotos().length ? -100 : 100
+                      }}
+                      transition={{ 
+                        duration: 0.3,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </AnimatePresence>
+                </motion.div>
+
+                {/* Right switch button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
+                  className="text-white hover:text-gray-300 transition-colors p-2"
+                >
+                  <ChevronRight size={40} />
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom thumbnail list */}
+            <div className="h-24 bg-black/50 backdrop-blur-sm p-4">
+              <div className="max-w-4xl mx-auto flex gap-2 overflow-x-auto">
+                {getAllPhotos().map((photo, index) => (
+                  <div
+                    key={photo.id}
+                    className={`flex-shrink-0 w-16 h-16 rounded cursor-pointer transition-all ${
+                      index === selectedPhoto ? 'ring-2 ring-white' : 'opacity-50 hover:opacity-75'
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedPhoto(index);
+                    }}
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover rounded"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
