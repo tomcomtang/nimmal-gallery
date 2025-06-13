@@ -4,6 +4,12 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '@/app/components/Footer'
 import { Cormorant } from 'next/font/google'
+import TwoColumnRow from '@/app/components/gallery/TwoColumnRow'
+import ThreeColumnRow from '@/app/components/gallery/ThreeColumnRow'
+import MixedRow from '@/app/components/gallery/MixedRow'
+import TwoEqualRow from '@/app/components/gallery/TwoEqualRow'
+import TwoUnequalRow from '@/app/components/gallery/TwoUnequalRow'
+import { Photo } from '@/app/types/gallery'
 
 const cormorant = Cormorant({
   subsets: ['latin'],
@@ -12,7 +18,7 @@ const cormorant = Cormorant({
 })
 
 // Sample photo data
-const photos = [
+const photos: Photo[] = [
   {
     id: 1,
     src: "/images/gallery-cover-work.jpg",
@@ -175,11 +181,11 @@ interface GalleryContentProps {
 }
 
 export default function GalleryContent({ category, info }: GalleryContentProps) {
-  const [selectedPhoto, setSelectedPhoto] = useState<typeof photos[0] | null>(null)
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
   const [selectedPhotoPosition, setSelectedPhotoPosition] = useState<{ x: number; y: number; width: number; height: number } | null>(null)
   const [currentGalleryInfo, setCurrentGalleryInfo] = useState(info)
 
-  const handlePhotoClick = (photo: typeof photos[0], e: React.MouseEvent) => {
+  const handlePhotoClick = (photo: Photo, e: React.MouseEvent) => {
     e.preventDefault()
     const rect = e.currentTarget.getBoundingClientRect()
     setSelectedPhotoPosition({
@@ -212,254 +218,37 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
         {/* Photo Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* First two albums wrapped in a div */}
-            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
-              {photos.slice(0, 2).map((photo, index) => (
-                <div 
-                  key={photo.id}
-                  className={`md:col-span-${index === 0 ? '7' : '5'} group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${index === 1 ? 'cursor-pointer' : ''}`}
-                  onClick={index === 1 ? (e) => handlePhotoClick(photo, e) : undefined}
-                >
-                  <div className="w-full h-[300px] relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                      <div className="w-full h-full overflow-hidden rounded-lg">
-                        <img
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        {/* Photo count label */}
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">
-                            {photo.photoCount} Photos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    {index === 0 && (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/80" />
-                        <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
-                          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6 tracking-wider">
-                            {info.title}
-                          </h2>
-                          <p className="text-lg text-gray-700 mb-6 max-w-2xl italic">
-                            {info.description}
-                          </p>
-                          <p className="text-base text-gray-600 max-w-2xl italic">
-                            Photography has been my passion for over a decade. Through this gallery, I hope to share not just images, but the emotions and stories behind them. Every shot is a window into a moment that moved me, and I'm excited to share these moments with you.
-                          </p>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* First row - Two columns */}
+            <TwoColumnRow 
+              photos={photos.slice(0, 2)} 
+              onPhotoClick={handlePhotoClick}
+              info={info}
+            />
 
-            {/* Rest of the albums */}
-              {photos.slice(2, 5).map((photo, index) => (
-                <div 
-                  key={photo.id}
-                  className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 md:col-span-4 cursor-pointer`}
-                  onClick={(e) => handlePhotoClick(photo, e)}
-                >
-                  <div className={`w-full relative h-[360px]`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                      <div className="w-full h-full overflow-hidden rounded-lg">
-                        {photo.useGrid ? (
-                          <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
-                            {photo.coverImages.map((imgSrc, imgIndex) => (
-                              <div key={imgIndex} className="relative overflow-hidden">
-                                <img
-                                  src={imgSrc}
-                                  alt={`${photo.title} - Preview ${imgIndex + 1}`}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <img
-                            src={photo.src}
-                            alt={photo.alt}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                          />
-                        )}
-                        {/* Photo count label */}
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">
-                            {photo.photoCount} Photos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            {photos.slice(5, 6).map((photo, index) => (
-                          <div 
-                            key={photo.id}
-                            className={`group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 md:col-span-7 h-[500px] cursor-pointer`}
-                            onClick={(e) => handlePhotoClick(photo, e)}
-                          >
-                            <div className={`w-full relative h-[500px]`}>
-                              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                                <div className="w-full h-full overflow-hidden rounded-lg">
-                                  {photo.useGrid ? (
-                                    <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
-                                      {photo.coverImages.map((imgSrc, imgIndex) => (
-                                        <div key={imgIndex} className="relative overflow-hidden">
-                                          <img
-                                            src={imgSrc}
-                                            alt={`${photo.title} - Preview ${imgIndex + 1}`}
-                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                          />
-                                        </div>
-                                      ))}
-                                    </div>
-                                  ) : (
-                                    <img
-                                      src={photo.src}
-                                      alt={photo.alt}
-                                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                    />
-                                  )}
-                                  {/* Photo count label */}
-                                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                                    <span className="text-sm font-medium text-gray-700">
-                                      {photo.photoCount} Photos
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-            {/* Right side vertical cards */}
-            <div className="md:col-span-5 flex flex-col h-[500px] gap-4">
-              {photos.slice(6, 8).map((photo, index) => (
-                <div 
-                  key={`right-${index}`} 
-                  className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex-1 cursor-pointer"
-                  onClick={(e) => handlePhotoClick(photo, e)}
-                >
-                  <div className="w-full h-full relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                      <div className="w-full h-full overflow-hidden rounded-lg">
-                        <img
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        {/* Photo count label */}
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">
-                            {photo.photoCount} Photos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* Second row - Three columns */}
+            <ThreeColumnRow 
+              photos={photos.slice(2, 5)} 
+              onPhotoClick={handlePhotoClick}
+            />
 
-            {/* Fourth row layout */}
-            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
-              <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
-                <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  onClick={(e) => handlePhotoClick(photos[8], e)}
-                >
-                  <div className="w-full h-[360px] relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                      <div className="w-full h-full overflow-hidden rounded-lg">
-                        <img
-                          src={photos[8].src}
-                          alt={photos[8].alt}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        {/* Photo count label */}
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">
-                            {photos[8].photoCount} Photos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  onClick={(e) => handlePhotoClick(photos[9], e)}
-                >
-                  <div className="w-full h-[360px] relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                      <div className="w-full h-full overflow-hidden rounded-lg">
-                        <img
-                          src={photos[9].src}
-                          alt={photos[9].alt}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        {/* Photo count label */}
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                          <span className="text-sm font-medium text-gray-700">
-                            {photos[9].photoCount} Photos
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Third row - Mixed layout */}
+            <MixedRow 
+              mainPhoto={photos[5]}
+              sidePhotos={photos.slice(6, 8)}
+              onPhotoClick={handlePhotoClick}
+            />
 
-            {/* Row 5 */}
-            <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
-              <div 
-                className="md:col-span-5 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={(e) => handlePhotoClick(photos[10], e)}
-              >
-                <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photos[10].src}
-                        alt={photos[10].alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      {/* Photo count label */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                        <span className="text-sm font-medium text-gray-700">
-                          {photos[10].photoCount} Photos
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div 
-                className="md:col-span-7 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={(e) => handlePhotoClick(photos[4], e)}
-              >
-                <div className="w-full h-[360px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photos[11].src}
-                        alt={photos[11].alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      {/* Photo count label */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                        <span className="text-sm font-medium text-gray-700">
-                          {photos[11].photoCount} Photos
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Fourth row - Two equal columns */}
+            <TwoEqualRow 
+              photos={photos.slice(8, 10)} 
+              onPhotoClick={handlePhotoClick}
+            />
+
+            {/* Fifth row - Two unequal columns */}
+            <TwoUnequalRow 
+              photos={photos.slice(10, 12)} 
+              onPhotoClick={handlePhotoClick}
+            />
           </div>
         </div>
       </div>
