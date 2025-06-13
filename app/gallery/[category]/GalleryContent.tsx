@@ -22,7 +22,8 @@ const photos = [
     galleryInfo: {
       title: "Morning Light Gallery",
       description: "A collection of photographs capturing the ethereal beauty of morning light. Each image tells a story of dawn's first rays touching the world."
-    }
+    },
+    photoCount: 24
   },
   {
     id: 2,
@@ -33,7 +34,8 @@ const photos = [
     galleryInfo: {
       title: "Urban Life Gallery",
       description: "Exploring the vibrant energy of city life through street photography. From bustling markets to quiet alleyways, each frame captures the essence of urban existence."
-    }
+    },
+    photoCount: 18
   },
   {
     id: 3,
@@ -44,7 +46,8 @@ const photos = [
     galleryInfo: {
       title: "Natural Beauty Gallery",
       description: "A journey through nature's most breathtaking landscapes. From majestic mountains to serene lakes, each photograph celebrates the beauty of our natural world."
-    }
+    },
+    photoCount: 32
   },
   {
     id: 4,
@@ -55,7 +58,8 @@ const photos = [
     galleryInfo: {
       title: "Architectural Details Gallery",
       description: "A close look at the intricate details of architectural masterpieces. Each image reveals the hidden beauty in the structures that surround us."
-    }
+    },
+    photoCount: 15
   },
   {
     id: 5,
@@ -66,7 +70,8 @@ const photos = [
     galleryInfo: {
       title: "Street Stories Gallery",
       description: "Capturing the candid moments that make up city life. Each photograph is a window into the stories that unfold on our streets every day."
-    }
+    },
+    photoCount: 27
   },
   {
     id: 6,
@@ -77,7 +82,15 @@ const photos = [
     galleryInfo: {
       title: "Urban Geometry Gallery",
       description: "Exploring the geometric patterns and shapes that define our urban landscape. Each image reveals the mathematical beauty hidden in our cities."
-    }
+    },
+    photoCount: 21,
+    useGrid: true,
+    coverImages: [
+      "https://moa.ie/wp-content/uploads/2021/04/MOA_plat_3-scaled.jpg",
+      "/images/gallery-cover-work.jpg",
+      "https://moa.ie/wp-content/uploads/2021/04/MOA_14_1-scaled.jpg",
+      "https://moa.ie/wp-content/uploads/2021/04/Moa_20_1-scaled-1.jpg"
+    ]
   },
 ]
 
@@ -149,11 +162,31 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 }`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-50/80 to-purple-100/80 p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                     <div className="w-full h-full overflow-hidden rounded-lg">
-                      <img
-                        src={photo.src}
-                        alt={photo.alt}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
+                      {photo.useGrid ? (
+                        <div className="grid grid-cols-2 grid-rows-2 gap-1 h-full">
+                          {photo.coverImages.map((imgSrc, imgIndex) => (
+                            <div key={imgIndex} className="relative overflow-hidden">
+                              <img
+                                src={imgSrc}
+                                alt={`${photo.title} - Preview ${imgIndex + 1}`}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      )}
+                      {/* 添加照片数量标签 */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                        <span className="text-sm font-medium text-gray-700">
+                          {photo.photoCount} Photos
+                        </span>
+                      </div>
                     </div>
                     {index === 0 && (
                       <>
@@ -191,6 +224,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                           alt={photo.alt}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
+                        {/* 添加照片数量标签 */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                          <span className="text-sm font-medium text-gray-700">
+                            {photo.photoCount} Photos
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -211,6 +250,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[1].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
+                      {/* 添加照片数量标签 */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                        <span className="text-sm font-medium text-gray-700">
+                          {photos[1].photoCount} Photos
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -227,6 +272,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[2].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
+                      {/* 添加照片数量标签 */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                        <span className="text-sm font-medium text-gray-700">
+                          {photos[2].photoCount} Photos
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -246,6 +297,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[3].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
+                      {/* 添加照片数量标签 */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                        <span className="text-sm font-medium text-gray-700">
+                          {photos[3].photoCount} Photos
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -262,6 +319,12 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[4].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
+                      {/* 添加照片数量标签 */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+                        <span className="text-sm font-medium text-gray-700">
+                          {photos[4].photoCount} Photos
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
