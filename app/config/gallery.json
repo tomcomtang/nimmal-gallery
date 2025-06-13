@@ -1,101 +1,101 @@
 {
   "categories": {
     "nature": {
-      "title": "自然风光",
-      "description": "探索大自然的壮丽景色，从山川到海洋，从日出到日落",
+      "title": "Nature",
+      "description": "Exploring the magnificent landscapes of nature, from mountains to oceans, from sunrise to sunset",
       "albums": [
         {
           "id": "nature-1",
-          "title": "山川壮丽",
-          "description": "记录雄伟山脉的壮丽景色",
+          "title": "Mountain Majesty",
+          "description": "Recording the magnificent scenery of majestic mountains",
           "coverImage": "/images/gallery/nature/nature_1.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-15"
         },
         {
           "id": "nature-2",
-          "title": "森林探秘",
-          "description": "探索神秘森林的奇妙世界",
+          "title": "Forest Exploration",
+          "description": "Exploring the magical world of mysterious forests",
           "coverImage": "/images/gallery/nature/nature_2.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-14"
         },
         {
           "id": "nature-3",
-          "title": "海洋奇观",
-          "description": "展现海洋的壮阔与神秘",
+          "title": "Ocean Wonders",
+          "description": "Showcasing the vastness and mystery of the ocean",
           "coverImage": "/images/gallery/nature/nature_3.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-13"
         },
         {
           "id": "nature-4",
-          "title": "日出日落",
-          "description": "捕捉一天中最美的时刻",
+          "title": "Sunrise & Sunset",
+          "description": "Capturing the most beautiful moments of the day",
           "coverImage": "/images/gallery/nature/nature_4.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-12"
         },
         {
           "id": "nature-5",
-          "title": "瀑布奇观",
-          "description": "记录瀑布的壮丽与力量",
+          "title": "Waterfall Wonders",
+          "description": "Recording the magnificence and power of waterfalls",
           "coverImage": "/images/gallery/nature/nature_5.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-11"
         },
         {
           "id": "nature-6",
-          "title": "湖泊倒影",
-          "description": "捕捉湖面的宁静与美丽",
+          "title": "Lake Reflections",
+          "description": "Capturing the tranquility and beauty of lake surfaces",
           "coverImage": "/images/gallery/nature/nature_6.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-10"
         },
         {
           "id": "nature-7",
-          "title": "草原风光",
-          "description": "展现草原的辽阔与生机",
+          "title": "Grassland Scenery",
+          "description": "Showcasing the vastness and vitality of grasslands",
           "coverImage": "/images/gallery/nature/nature_7.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-09"
         },
         {
           "id": "nature-8",
-          "title": "沙漠奇景",
-          "description": "探索沙漠的神秘与壮美",
+          "title": "Desert Wonders",
+          "description": "Exploring the mystery and grandeur of deserts",
           "coverImage": "/images/gallery/nature/nature_8.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-08"
         },
         {
           "id": "nature-9",
-          "title": "冰川世界",
-          "description": "记录冰川的纯净与壮丽",
+          "title": "Glacier World",
+          "description": "Recording the purity and magnificence of glaciers",
           "coverImage": "/images/gallery/nature/nature_9.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-07"
         },
         {
           "id": "nature-10",
-          "title": "峡谷奇观",
-          "description": "展现峡谷的深邃与壮观",
+          "title": "Canyon Wonders",
+          "description": "Showcasing the depth and grandeur of canyons",
           "coverImage": "/images/gallery/nature/nature_10.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-06"
         },
         {
           "id": "nature-11",
-          "title": "雨林探秘",
-          "description": "探索雨林的神秘与生机",
+          "title": "Rainforest Exploration",
+          "description": "Exploring the mystery and vitality of rainforests",
           "coverImage": "/images/gallery/nature/nature_11.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-05"
         },
         {
           "id": "nature-12",
-          "title": "极地风光",
-          "description": "记录极地的纯净与壮美",
+          "title": "Polar Scenery",
+          "description": "Recording the purity and grandeur of polar regions",
           "coverImage": "/images/gallery/nature/nature_12.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-04"
@@ -103,101 +103,101 @@
       ]
     },
     "urban": {
-      "title": "城市掠影",
-      "description": "捕捉城市的繁华与活力，记录都市生活的精彩瞬间",
+      "title": "Urban Life",
+      "description": "Capturing the prosperity and vitality of cities, recording the wonderful moments of urban life",
       "albums": [
         {
           "id": "urban-1",
-          "title": "城市夜景",
-          "description": "记录城市的璀璨夜景",
+          "title": "City Night Views",
+          "description": "Recording the brilliant night views of cities",
           "coverImage": "/images/gallery/urban/urban_1.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-15"
         },
         {
           "id": "urban-2",
-          "title": "街头生活",
-          "description": "捕捉城市生活的精彩瞬间",
+          "title": "Street Life",
+          "description": "Capturing the wonderful moments of urban life",
           "coverImage": "/images/gallery/urban/urban_2.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-14"
         },
         {
           "id": "urban-3",
-          "title": "建筑艺术",
-          "description": "展现现代建筑的独特魅力",
+          "title": "Architectural Art",
+          "description": "Showcasing the unique charm of modern architecture",
           "coverImage": "/images/gallery/urban/urban_3.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-13"
         },
         {
           "id": "urban-4",
-          "title": "城市公园",
-          "description": "记录城市中的绿色空间",
+          "title": "City Parks",
+          "description": "Recording the green spaces in cities",
           "coverImage": "/images/gallery/urban/urban_4.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-12"
         },
         {
           "id": "urban-5",
-          "title": "商业街区",
-          "description": "展现城市的繁华与活力",
+          "title": "Commercial Districts",
+          "description": "Showcasing the prosperity and vitality of cities",
           "coverImage": "/images/gallery/urban/urban_5.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-11"
         },
         {
           "id": "urban-6",
-          "title": "城市广场",
-          "description": "记录城市公共空间的活力",
+          "title": "City Squares",
+          "description": "Recording the vitality of urban public spaces",
           "coverImage": "/images/gallery/urban/urban_6.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-10"
         },
         {
           "id": "urban-7",
-          "title": "城市交通",
-          "description": "展现城市交通的繁忙景象",
+          "title": "Urban Transportation",
+          "description": "Showcasing the busy scenes of urban transportation",
           "coverImage": "/images/gallery/urban/urban_7.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-09"
         },
         {
           "id": "urban-8",
-          "title": "城市天际线",
-          "description": "记录城市的天际线美景",
+          "title": "City Skylines",
+          "description": "Recording the beautiful city skylines",
           "coverImage": "/images/gallery/urban/urban_8.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-08"
         },
         {
           "id": "urban-9",
-          "title": "城市文化",
-          "description": "展现城市的文化特色",
+          "title": "Urban Culture",
+          "description": "Showcasing the cultural characteristics of cities",
           "coverImage": "/images/gallery/urban/urban_9.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-07"
         },
         {
           "id": "urban-10",
-          "title": "城市生活",
-          "description": "记录城市居民的日常生活",
+          "title": "City Life",
+          "description": "Recording the daily life of urban residents",
           "coverImage": "/images/gallery/urban/urban_10.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-06"
         },
         {
           "id": "urban-11",
-          "title": "城市变迁",
-          "description": "展现城市的发展与变化",
+          "title": "Urban Changes",
+          "description": "Showcasing the development and changes of cities",
           "coverImage": "/images/gallery/urban/urban_11.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-05"
         },
         {
           "id": "urban-12",
-          "title": "城市记忆",
-          "description": "记录城市的历史与记忆",
+          "title": "Urban Memory",
+          "description": "Recording the history and memory of cities",
           "coverImage": "/images/gallery/urban/urban_12.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-04"
@@ -205,101 +205,101 @@
       ]
     },
     "travel": {
-      "title": "旅行记忆",
-      "description": "记录旅途中的精彩瞬间，分享世界各地的独特风景",
+      "title": "Travel Memories",
+      "description": "Recording wonderful moments during journeys, sharing unique landscapes from around the world",
       "albums": [
         {
           "id": "travel-1",
-          "title": "亚洲之旅",
-          "description": "探索亚洲的独特魅力",
+          "title": "Asian Journey",
+          "description": "Exploring the unique charm of Asia",
           "coverImage": "/images/gallery/travel/travel_1.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-15"
         },
         {
           "id": "travel-2",
-          "title": "欧洲风情",
-          "description": "感受欧洲的历史与文化",
+          "title": "European Style",
+          "description": "Experiencing the history and culture of Europe",
           "coverImage": "/images/gallery/travel/travel_2.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-14"
         },
         {
           "id": "travel-3",
-          "title": "美洲探险",
-          "description": "探索美洲的自然奇观",
+          "title": "American Adventure",
+          "description": "Exploring the natural wonders of America",
           "coverImage": "/images/gallery/travel/travel_3.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-13"
         },
         {
           "id": "travel-4",
-          "title": "非洲之旅",
-          "description": "体验非洲的原始魅力",
+          "title": "African Journey",
+          "description": "Experiencing the primitive charm of Africa",
           "coverImage": "/images/gallery/travel/travel_4.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-12"
         },
         {
           "id": "travel-5",
-          "title": "大洋洲风光",
-          "description": "感受大洋洲的自然美景",
+          "title": "Oceania Scenery",
+          "description": "Experiencing the natural beauty of Oceania",
           "coverImage": "/images/gallery/travel/travel_5.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-11"
         },
         {
           "id": "travel-6",
-          "title": "极地探险",
-          "description": "探索极地的神秘世界",
+          "title": "Polar Adventure",
+          "description": "Exploring the mysterious world of polar regions",
           "coverImage": "/images/gallery/travel/travel_6.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-10"
         },
         {
           "id": "travel-7",
-          "title": "海岛度假",
-          "description": "享受海岛的悠闲时光",
+          "title": "Island Vacation",
+          "description": "Enjoying the leisurely time on islands",
           "coverImage": "/images/gallery/travel/travel_7.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-09"
         },
         {
           "id": "travel-8",
-          "title": "古城探秘",
-          "description": "探索古城的历史遗迹",
+          "title": "Ancient City Exploration",
+          "description": "Exploring the historical relics of ancient cities",
           "coverImage": "/images/gallery/travel/travel_8.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-08"
         },
         {
           "id": "travel-9",
-          "title": "美食之旅",
-          "description": "品尝世界各地的美食",
+          "title": "Food Journey",
+          "description": "Tasting cuisines from around the world",
           "coverImage": "/images/gallery/travel/travel_9.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-07"
         },
         {
           "id": "travel-10",
-          "title": "文化体验",
-          "description": "体验不同文化的魅力",
+          "title": "Cultural Experience",
+          "description": "Experiencing the charm of different cultures",
           "coverImage": "/images/gallery/travel/travel_10.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-06"
         },
         {
           "id": "travel-11",
-          "title": "自然探索",
-          "description": "探索大自然的奇观",
+          "title": "Nature Exploration",
+          "description": "Exploring the wonders of nature",
           "coverImage": "/images/gallery/travel/travel_11.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-05"
         },
         {
           "id": "travel-12",
-          "title": "城市漫步",
-          "description": "漫步世界各地的城市",
+          "title": "City Walks",
+          "description": "Walking through cities around the world",
           "coverImage": "/images/gallery/travel/travel_12.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-04"
@@ -307,101 +307,101 @@
       ]
     },
     "architecture": {
-      "title": "建筑艺术",
-      "description": "展现建筑的独特魅力，从古典到现代，从东方到西方",
+      "title": "Architectural Art",
+      "description": "Showcasing the unique charm of architecture, from classical to modern, from East to West",
       "albums": [
         {
           "id": "architecture-1",
-          "title": "现代建筑",
-          "description": "展现现代建筑的创新设计",
+          "title": "Modern Architecture",
+          "description": "Showcasing the innovative design of modern architecture",
           "coverImage": "/images/gallery/architecture/architecture_1.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-15"
         },
         {
           "id": "architecture-2",
-          "title": "古典建筑",
-          "description": "记录古典建筑的永恒魅力",
+          "title": "Classical Architecture",
+          "description": "Recording the eternal charm of classical architecture",
           "coverImage": "/images/gallery/architecture/architecture_2.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-14"
         },
         {
           "id": "architecture-3",
-          "title": "宗教建筑",
-          "description": "展现宗教建筑的神圣与庄严",
+          "title": "Religious Architecture",
+          "description": "Showcasing the sacredness and solemnity of religious architecture",
           "coverImage": "/images/gallery/architecture/architecture_3.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-13"
         },
         {
           "id": "architecture-4",
-          "title": "宫殿建筑",
-          "description": "记录宫殿建筑的宏伟与奢华",
+          "title": "Palace Architecture",
+          "description": "Recording the grandeur and luxury of palace architecture",
           "coverImage": "/images/gallery/architecture/architecture_4.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-12"
         },
         {
           "id": "architecture-5",
-          "title": "园林建筑",
-          "description": "展现园林建筑的精致与优雅",
+          "title": "Garden Architecture",
+          "description": "Showcasing the delicacy and elegance of garden architecture",
           "coverImage": "/images/gallery/architecture/architecture_5.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-11"
         },
         {
           "id": "architecture-6",
-          "title": "民居建筑",
-          "description": "记录传统民居的特色",
+          "title": "Residential Architecture",
+          "description": "Recording the characteristics of traditional residences",
           "coverImage": "/images/gallery/architecture/architecture_6.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-10"
         },
         {
           "id": "architecture-7",
-          "title": "商业建筑",
-          "description": "展现商业建筑的现代感",
+          "title": "Commercial Architecture",
+          "description": "Showcasing the modern feel of commercial architecture",
           "coverImage": "/images/gallery/architecture/architecture_7.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-09"
         },
         {
           "id": "architecture-8",
-          "title": "文化建筑",
-          "description": "记录文化建筑的独特魅力",
+          "title": "Cultural Architecture",
+          "description": "Recording the unique charm of cultural architecture",
           "coverImage": "/images/gallery/architecture/architecture_8.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-08"
         },
         {
           "id": "architecture-9",
-          "title": "工业建筑",
-          "description": "展现工业建筑的实用美学",
+          "title": "Industrial Architecture",
+          "description": "Showcasing the practical aesthetics of industrial architecture",
           "coverImage": "/images/gallery/architecture/architecture_9.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-07"
         },
         {
           "id": "architecture-10",
-          "title": "桥梁建筑",
-          "description": "记录桥梁建筑的工程之美",
+          "title": "Bridge Architecture",
+          "description": "Recording the engineering beauty of bridge architecture",
           "coverImage": "/images/gallery/architecture/architecture_10.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-06"
         },
         {
           "id": "architecture-11",
-          "title": "景观建筑",
-          "description": "展现景观建筑的自然融合",
+          "title": "Landscape Architecture",
+          "description": "Showcasing the natural integration of landscape architecture",
           "coverImage": "/images/gallery/architecture/architecture_11.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-05"
         },
         {
           "id": "architecture-12",
-          "title": "未来建筑",
-          "description": "探索建筑设计的未来趋势",
+          "title": "Future Architecture",
+          "description": "Exploring future trends in architectural design",
           "coverImage": "/images/gallery/architecture/architecture_12.jpg",
           "photoCount": 20,
           "createdAt": "2024-03-04"
