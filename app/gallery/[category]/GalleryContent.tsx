@@ -11,7 +11,7 @@ const cormorant = Cormorant({
   variable: '--font-cormorant'
 })
 
-// 示例照片数据
+// Sample photo data
 const photos = [
   {
     id: 1,
@@ -135,9 +135,9 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
 
   return (
     <div className={`min-h-screen pt-40 pb-12 ${cormorant.variable} font-cormorant`}>
-      {/* 内容层 */}
+      {/* Content Layer */}
       <div className="container mx-auto px-4 relative z-10">
-        {/* 照片网格 */}
+        {/* Photo Grid */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             {photos.slice(0, 6).map((photo, index) => (
@@ -182,7 +182,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                       )}
-                      {/* 添加照片数量标签 */}
+                      {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
                           {photo.photoCount} Photos
@@ -209,7 +209,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 </div>
               </div>
             ))}
-            {/* 右侧两个垂直排列的卡片 */}
+            {/* Right side vertical cards */}
             <div className="md:col-span-5 flex flex-col h-[500px] gap-4">
               {photos.slice(0, 2).map((photo, index) => (
                 <div 
@@ -225,7 +225,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                           alt={photo.alt}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                        {/* 添加照片数量标签 */}
+                        {/* Photo count label */}
                         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                           <span className="text-sm font-medium text-gray-700">
                             {photo.photoCount} Photos
@@ -237,7 +237,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                 </div>
               ))}
             </div>
-            {/* 第四行布局 */}
+            {/* Fourth row layout */}
             <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
               <div 
                 className="md:col-span-6 group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
@@ -251,7 +251,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[1].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      {/* 添加照片数量标签 */}
+                      {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
                           {photos[1].photoCount} Photos
@@ -273,7 +273,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[2].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      {/* 添加照片数量标签 */}
+                      {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
                           {photos[2].photoCount} Photos
@@ -298,7 +298,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[3].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      {/* 添加照片数量标签 */}
+                      {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
                           {photos[3].photoCount} Photos
@@ -320,7 +320,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                         alt={photos[4].alt}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
-                      {/* 添加照片数量标签 */}
+                      {/* Photo count label */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
                         <span className="text-sm font-medium text-gray-700">
                           {photos[4].photoCount} Photos
@@ -335,7 +335,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
         </div>
       </div>
 
-      {/* 浮层 */}
+      {/* Floating Layer */}
       <AnimatePresence>
         {selectedPhoto && selectedPhotoPosition && (
           <motion.div
@@ -410,17 +410,17 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     }}
                     className="flex flex-col h-full"
                   >
-                    {/* 相册名称 */}
+                    {/* Album name */}
                     <h2 className="text-3xl font-medium mb-4 text-gray-900">
                       {currentGalleryInfo.title}
                     </h2>
                     
-                    {/* 相册备注 */}
+                    {/* Album description */}
                     <p className="text-gray-600 mb-8 flex-grow">
                       {currentGalleryInfo.description}
                     </p>
 
-                    {/* 按钮组 */}
+                    {/* Button group */}
                     <div className="space-y-4">
                       <button 
                         className="w-full py-2 px-4 bg-amber-100/80 text-gray-800 rounded-lg hover:bg-amber-100 transition-colors"
@@ -451,7 +451,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
         )}
       </AnimatePresence>
 
-      {/* 页脚 */}
+      {/* Footer */}
       <Footer />
     </div>
   )
