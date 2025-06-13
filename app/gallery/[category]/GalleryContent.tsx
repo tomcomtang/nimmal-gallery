@@ -147,63 +147,71 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
   };
 
   return (
-    <div className={`min-h-screen pt-40 pb-12 ${cormorant.variable} font-cormorant`}>
+    <div className={`flex flex-col min-h-screen ${cormorant.variable} font-cormorant`}>
+      {/* Background Layer */}
+      <div className="fixed inset-0 bg-gradient-to-b from-white via-yellow-50 to-yellow-100 opacity-50" />
+      
       {/* Content Layer */}
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Photo Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* First row - Always Two columns */}
-            <TwoColumnRow 
-              photos={photos.slice(0, 2)} 
-              onPhotoClick={handlePhotoClick}
-              info={info}
-              hideFirstPhotoLabels={true}
-            />
+      <div className="flex-1 pt-40 relative z-10">
+        <div className="container mx-auto px-4">
+          {/* Photo Grid */}
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+              {/* First row - Always Two columns */}
+              <TwoColumnRow 
+                photos={photos.slice(0, 2)} 
+                onPhotoClick={handlePhotoClick}
+                info={info}
+                hideFirstPhotoLabels={true}
+              />
 
-            {/* Random layouts for remaining photos */}
-            {layouts.map((layout, index) => {
-              const startIndex = getLayoutStartIndex(index);
-              
-              switch (layout) {
-                case 'three':
-                  return (
-                    <ThreeColumnRow 
-                      key={`three-${index}`}
-                      photos={photos.slice(startIndex, startIndex + 3)} 
-                      onPhotoClick={handlePhotoClick}
-                    />
-                  );
-                case 'mixed':
-                  return (
-                    <MixedRow 
-                      key={`mixed-${index}`}
-                      mainPhoto={photos[startIndex]}
-                      sidePhotos={photos.slice(startIndex + 1, startIndex + 3)}
-                      onPhotoClick={handlePhotoClick}
-                    />
-                  );
-                case 'twoEqual':
-                  return (
-                    <TwoEqualRow 
-                      key={`twoEqual-${index}`}
-                      photos={photos.slice(startIndex, startIndex + 2)} 
-                      onPhotoClick={handlePhotoClick}
-                    />
-                  );
-                case 'twoUnequal':
-                  return (
-                    <TwoUnequalRow 
-                      key={`twoUnequal-${index}`}
-                      photos={photos.slice(startIndex, startIndex + 2)} 
-                      onPhotoClick={handlePhotoClick}
-                    />
-                  );
-              }
-            })}
+              {/* Random layouts for remaining photos */}
+              {layouts.map((layout, index) => {
+                const startIndex = getLayoutStartIndex(index);
+                
+                switch (layout) {
+                  case 'three':
+                    return (
+                      <ThreeColumnRow 
+                        key={`three-${index}`}
+                        photos={photos.slice(startIndex, startIndex + 3)} 
+                        onPhotoClick={handlePhotoClick}
+                      />
+                    );
+                  case 'mixed':
+                    return (
+                      <MixedRow 
+                        key={`mixed-${index}`}
+                        mainPhoto={photos[startIndex]}
+                        sidePhotos={photos.slice(startIndex + 1, startIndex + 3)}
+                        onPhotoClick={handlePhotoClick}
+                      />
+                    );
+                  case 'twoEqual':
+                    return (
+                      <TwoEqualRow 
+                        key={`twoEqual-${index}`}
+                        photos={photos.slice(startIndex, startIndex + 2)} 
+                        onPhotoClick={handlePhotoClick}
+                      />
+                    );
+                  case 'twoUnequal':
+                    return (
+                      <TwoUnequalRow 
+                        key={`twoUnequal-${index}`}
+                        photos={photos.slice(startIndex, startIndex + 2)} 
+                        onPhotoClick={handlePhotoClick}
+                      />
+                    );
+                }
+              })}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Floating Layer */}
       <AnimatePresence>
@@ -320,9 +328,6 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Footer */}
-      <Footer />
     </div>
   )
 } 

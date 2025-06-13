@@ -99,7 +99,7 @@ export default function Home() {
                 {config.hero.subtitle}
               </p>
               <Link
-                href="/gallery"
+                href={config.featuredCollections[0].link}
                 className="inline-flex items-center justify-center px-6 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors w-fit"
               >
                 {config.hero.cta.primary}
