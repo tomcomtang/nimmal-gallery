@@ -7,7 +7,6 @@ interface MixedRowProps {
 }
 
 export default function MixedRow({ mainAlbum, sideAlbums, onAlbumClick }: MixedRowProps) {
-  console.log(sideAlbums);
   return (
     <>
       <div 

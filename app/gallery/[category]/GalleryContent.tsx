@@ -103,12 +103,8 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
     for (let i = 0; i < layoutIndex; i++) {
       startIndex += LAYOUT_PHOTO_COUNTS[layouts[i]];
     }
-    console.log(startIndex);
     return startIndex;
   };
-
-  console.log(albums);
-  console.log(layouts);
 
   return (
     <div className={`flex flex-col min-h-screen ${cormorant.variable} font-cormorant`}>

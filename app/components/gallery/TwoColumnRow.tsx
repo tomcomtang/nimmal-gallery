@@ -12,7 +12,6 @@ interface TwoColumnRowProps {
 }
 
 export default function TwoColumnRow({ albums, onAlbumClick, info, hideFirstPhotoLabels = false }: TwoColumnRowProps) {
-  console.log(albums);
   return (
     <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-8">
       {albums.map((album, index) => (
