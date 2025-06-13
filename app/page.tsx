@@ -27,8 +27,8 @@ export default function Home() {
               <div className="absolute right-0 top-0 w-[90%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform -rotate-3 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[0].image}
-                    alt={config.featured.collections[0].title}
+                    src={config.featuredCollections[0].image}
+                    alt={config.featuredCollections[0].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -38,8 +38,8 @@ export default function Home() {
               <div className="absolute right-[15%] top-[10%] w-[90%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform rotate-2 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[1].image}
-                    alt={config.featured.collections[1].title}
+                    src={config.featuredCollections[1].image}
+                    alt={config.featuredCollections[1].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -49,8 +49,8 @@ export default function Home() {
               <div className="absolute right-[30%] top-[20%] w-[90%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform -rotate-1 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[2].image}
-                    alt={config.featured.collections[2].title}
+                    src={config.featuredCollections[2].image}
+                    alt={config.featuredCollections[2].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -60,8 +60,8 @@ export default function Home() {
               <div className="absolute right-[5%] top-[30%] w-[85%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform rotate-3 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[3].image}
-                    alt={config.featured.collections[3].title}
+                    src={config.featuredCollections[0].image}
+                    alt={config.featuredCollections[0].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -71,8 +71,8 @@ export default function Home() {
               <div className="absolute right-[25%] top-[5%] w-[85%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform -rotate-2 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[0].image}
-                    alt={config.featured.collections[0].title}
+                    src={config.featuredCollections[1].image}
+                    alt={config.featuredCollections[1].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -82,8 +82,8 @@ export default function Home() {
               <div className="absolute right-[40%] top-[15%] w-[85%] aspect-[4/3] bg-gradient-to-br from-gray-50 to-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform rotate-1 hover:scale-[1.02] transition-transform duration-300 rounded-2xl">
                 <div className="w-full h-full overflow-hidden rounded-xl">
                   <img
-                    src={config.featured.collections[1].image}
-                    alt={config.featured.collections[1].title}
+                    src={config.featuredCollections[2].image}
+                    alt={config.featuredCollections[2].title}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -99,10 +99,10 @@ export default function Home() {
                 {config.hero.subtitle}
               </p>
               <Link
-                href={config.hero.ctaLink}
+                href="/gallery"
                 className="inline-flex items-center justify-center px-6 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors w-fit"
               >
-                {config.hero.ctaText}
+                {config.hero.cta.primary}
               </Link>
             </div>
           </div>

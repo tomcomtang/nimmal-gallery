@@ -65,20 +65,17 @@ export interface Testimonial {
 }
 
 export interface HomeConfig {
-  hero: HeroSection
-  featured: {
+  hero: {
     title: string
+    subtitle: string
     description: string
-    collections: FeaturedCollection[]
+    cta: {
+      primary: string
+      secondary: string
+    }
+    backgroundImage: string
   }
-  services: {
-    title: string
-    description: string
-    items: Service[]
-  }
-  testimonials: {
-    title: string
-    description: string
-    items: Testimonial[]
-  }
+  featuredCollections: FeaturedCollection[]
+  services: Service[]
+  testimonials: Testimonial[]
 } 
