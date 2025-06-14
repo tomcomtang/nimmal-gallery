@@ -146,7 +146,7 @@ export default function AlbumContent({ albumData, category }: AlbumContentProps)
           </div>
 
           {/* Photos grid */}
-          <div className="max-w-6xl mx-auto h-[550px]">
+          <div className="max-w-6xl mx-auto h-[calc(100vh-400px)]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentLayout}
