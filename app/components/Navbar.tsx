@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 const navItems = [
@@ -18,7 +20,7 @@ export default function Navbar() {
             Gallery
           </Link>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Desktop */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <Link
@@ -32,7 +34,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+          <label htmlFor="mobile-menu" className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 cursor-pointer">
             <svg
               className="h-6 w-6"
               fill="none"
@@ -44,7 +46,25 @@ export default function Navbar() {
             >
               <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-          </button>
+          </label>
+        </div>
+
+        {/* Mobile Menu Checkbox (hidden) */}
+        <input type="checkbox" id="mobile-menu" className="hidden peer" />
+
+        {/* Mobile Menu */}
+        <div className="md:hidden absolute left-0 right-0 bg-white shadow-lg transform transition-all duration-300 ease-in-out max-h-0 peer-checked:max-h-96 overflow-hidden">
+          <div className="px-4 py-4 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

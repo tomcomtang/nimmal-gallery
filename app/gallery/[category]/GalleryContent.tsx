@@ -78,18 +78,25 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
 
   const handleAlbumClick = (album: Album, e: React.MouseEvent) => {
     e.preventDefault()
+    e.stopPropagation()
     const rect = e.currentTarget.getBoundingClientRect()
     setSelectedAlbumPosition(rect)
     setSelectedAlbum(album)
     setCurrentGalleryInfo(album)
   }
 
-  const handleClose = () => {
+  const handleClose = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
     setSelectedAlbum(null)
     setSelectedAlbumPosition(null)
   }
 
-  const handleNextGallery = () => {
+  const handleNextGallery = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (!selectedAlbum) return
     const currentIndex = albums.findIndex(p => p.id === selectedAlbum.id)
     const nextAlbum: Album = albums[(currentIndex + 1) % albums.length]
@@ -182,7 +189,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
             className="fixed inset-0 bg-black/80 z-50"
-            onClick={handleClose}
+            onClick={(e) => handleClose(e)}
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div 
@@ -209,10 +216,10 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                   duration: 1.2,
                   bounce: 0.1
                 }}
-                className="bg-white rounded-lg overflow-hidden flex"
+                className="bg-white rounded-lg overflow-hidden flex md:flex-row flex-col w-[95%] md:w-auto"
                 onClick={e => e.stopPropagation()}
               >
-                <div className="w-2/3 relative">
+                <div className="w-full md:w-2/3 relative h-[300px] md:h-auto">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={selectedAlbum.id}
@@ -236,7 +243,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     duration: 0.8,
                     delay: 0.4
                   }}
-                  className="p-8 flex flex-col overflow-hidden bg-white"
+                  className="p-6 md:p-8 flex flex-col overflow-hidden bg-white w-full md:w-auto min-w-[280px]"
                 >
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
@@ -245,7 +252,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                       duration: 0.6,
                       delay: 0.8 
                     }}
-                    className="flex flex-col h-full"
+                    className="flex flex-col h-full w-full"
                   >
                     {/* Album name */}
                     <h2 className="text-3xl font-medium mb-4 text-gray-900">
@@ -258,7 +265,7 @@ export default function GalleryContent({ category, info }: GalleryContentProps) 
                     </p>
 
                     {/* Button group */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 w-full">
                       <button 
                         className="w-full py-2 px-4 bg-amber-100/80 text-gray-800 rounded-lg hover:bg-amber-100 transition-colors"
                         onClick={() => window.location.href = `/gallery/${category}/${selectedAlbum.id}`}
